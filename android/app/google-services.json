@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "680916591227",
+    "project_id": "portofoliodevalda",
+    "storage_bucket": "portofoliodevalda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680916591227:android:b4745455c03caeaab4b8de",
+        "android_client_info": {
+          "package_name": "com.example.devaldaporto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680916591227-asome962mig1v4cohosifv6e7529j8i7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHW2xSyT8aOg_CSRikqDMX6_8PJRF0Rmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680916591227-asome962mig1v4cohosifv6e7529j8i7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "680916591227-sgsffdg0tlt5tshj6qusb37qntm17il6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.devaldaporto"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
