@@ -1,3 +1,4 @@
+import 'package:devaldaporto/pages/home.dart';
 import 'package:devaldaporto/pages/welcome.dart';
 import 'package:devaldaporto/route/page_route.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: WelcomePage(),
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFf7fdfa)),
+      home: const Home(),
       getPages: PGRT.pages,
     );
   }
