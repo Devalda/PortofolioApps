@@ -56,6 +56,9 @@ flutter:
     - assets/RiveAssets/Robot.riv
     - assets/RiveAssets/Bird.riv
     - assets/RiveAssets/Love.riv
+    - assets/RiveAssets/Space.riv
+    - assets/RiveAssets/Cosmos.riv
+    - assets/RiveAssets/Orbit.riv
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
