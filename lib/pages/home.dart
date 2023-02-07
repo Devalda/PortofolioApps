@@ -3,8 +3,8 @@ import 'package:devaldaporto/pages/profile.dart';
 import 'package:devaldaporto/pages/quotegen.dart';
 import 'package:devaldaporto/utils/rive_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as flumat;
 import 'package:rive/rive.dart';
-
 import 'myproject.dart';
 
 const TextStyle _textStyle = TextStyle(
@@ -23,6 +23,33 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   RiveAssets selectedBotNav = bottomNavs.first;
 
+  final gradientColor = const [
+    [
+      Color.fromARGB(190, 127, 56, 186),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+    ],
+    [
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(190, 127, 56, 186),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+    ],
+    [
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(190, 127, 56, 186),
+      Color.fromARGB(168, 58, 14, 94),
+    ],
+    [
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(190, 127, 56, 186),
+    ],
+  ];
+
   int _currentIndex = 0;
   final pageSelected = [QuoteGen(), Profile(), MyProject(), MyMedia()];
 
@@ -33,12 +60,15 @@ class _HomeState extends State<Home> {
       resizeToAvoidBottomInset: false,
       extendBody: true,
       bottomNavigationBar: SafeArea(
-        bottom: false,
         child: Container(
           padding: const EdgeInsets.fromLTRB(18, 12, 18, 5),
           margin: const EdgeInsets.symmetric(horizontal: 24),
-          decoration: const BoxDecoration(
-              color: Color.fromARGB(205, 158, 158, 158),
+          decoration: BoxDecoration(
+              gradient: flumat.LinearGradient(
+                end: Alignment.topRight,
+                begin: Alignment.bottomLeft,
+                colors: gradientColor[_currentIndex],
+              ),
               borderRadius: BorderRadius.all(Radius.circular(24))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,10 +115,10 @@ class _HomeState extends State<Home> {
                         margin: const EdgeInsets.only(bottom: 2),
                         height: 4,
                         width: bottomNavs[index] == selectedBotNav ? 25 : 0,
-                        decoration: BoxDecoration(
-                            color: Colors.lightBlue[200],
+                        decoration: const BoxDecoration(
+                            color: Color(0xFFfa6435),
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(12))),
+                                BorderRadius.all(Radius.circular(12))),
                       ),
                     ],
                   ),
@@ -98,73 +128,6 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      // body: Center(
-      //   child: pageSelected[_currentIndex],
-      // ),
-
-      // bottomNavigationBar: NavigationBarTheme(
-      //   data: NavigationBarThemeData(
-      //     indicatorColor: Color(0xFFf4d096),
-      //   ),
-      //   child: NavigationBar(
-      //     height: 70,
-      //     backgroundColor: Color(0xFFfff4e6).withOpacity(0.7),
-      //     animationDuration: const Duration(seconds: 1),
-      //     labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-      //     selectedIndex: _currentIndex,
-      //     onDestinationSelected: (int newIndex) {
-      //       setState(() {
-      //         _currentIndex = newIndex;
-      //       });
-      //     },
-      //     destinations: const [
-      //       NavigationDestination(
-      //         selectedIcon: Icon(
-      //           Icons.psychology,
-      //           size: 30,
-      //         ),
-      //         icon: Icon(
-      //           Icons.psychology_outlined,
-      //           size: 40,
-      //         ),
-      //         label: 'quote',
-      //       ),
-      //       NavigationDestination(
-      //         selectedIcon: Icon(
-      //           Icons.person,
-      //           size: 30,
-      //         ),
-      //         icon: Icon(
-      //           Icons.person,
-      //           size: 30,
-      //         ),
-      //         label: 'profile',
-      //       ),
-      //       NavigationDestination(
-      //         selectedIcon: Icon(
-      //           Icons.account_tree,
-      //           size: 30,
-      //         ),
-      //         icon: Icon(
-      //           Icons.account_tree_outlined,
-      //           size: 40,
-      //         ),
-      //         label: 'project',
-      //       ),
-      //       NavigationDestination(
-      //         selectedIcon: Icon(
-      //           Icons.add_link,
-      //           size: 30,
-      //         ),
-      //         icon: Icon(
-      //           Icons.add_link_outlined,
-      //           size: 40,
-      //         ),
-      //         label: 'connect',
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

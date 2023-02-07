@@ -1,6 +1,6 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyProject extends StatefulWidget {
   @override
@@ -10,8 +10,6 @@ class MyProject extends StatefulWidget {
 class _MyProjectState extends State<MyProject> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("project")),
-    );
+    return Scaffold(body: Container());
   }
 }
