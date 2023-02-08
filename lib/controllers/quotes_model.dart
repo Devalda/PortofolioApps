@@ -1,11 +1,9 @@
 class Blog {
   final String quoteText;
-  // final int id;
   final String author;
 
   const Blog({
     required this.quoteText,
-    // required this.id,
     required this.author,
   });
 
