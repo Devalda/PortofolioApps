@@ -15,6 +15,9 @@ class MyProject extends StatefulWidget {
 class _MyProjectState extends State<MyProject> {
   var MQwidth, MQsize, MQheight;
   bool isRotate = false;
+  bool isPJ1 = false;
+  bool isPJ2 = false;
+  bool isPJ3 = false;
 
   @override
   void initState() {
@@ -102,43 +105,94 @@ class _MyProjectState extends State<MyProject> {
               left: 115,
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(RouteName.welcome);
+                  setState(() {
+                    isPJ1 = !isPJ1;
+                  });
                 },
                 child: Container(
                   height: 30,
                   width: 30,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.transparent,
                 ),
               ),
             ),
+            Positioned(
+                top: 270,
+                left: 120,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.bounceOut,
+                    height: isPJ1 ? 300 : 0,
+                    width: isPJ1 ? 200 : 0,
+                    color: isPJ1
+                        ? Colors.white.withOpacity(0.5)
+                        : Colors.transparent,
+                  ),
+                )),
             Positioned(
               top: 135,
               right: 318,
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(RouteName.welcome);
+                  setState(() {
+                    isPJ2 = !isPJ2;
+                  });
                 },
                 child: Container(
                   height: 30,
                   width: 30,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.transparent,
                 ),
               ),
             ),
+            Positioned(
+                top: 135,
+                left: 665,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.bounceOut,
+                    height: isPJ2 ? 300 : 0,
+                    width: isPJ2 ? 200 : 0,
+                    color: isPJ2
+                        ? Colors.white.withOpacity(0.5)
+                        : Colors.transparent,
+                  ),
+                )),
             Positioned(
               top: 378,
               right: 77,
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(RouteName.welcome);
+                  setState(() {
+                    isPJ3 = !isPJ3;
+                  });
                 },
                 child: Container(
                   height: 50,
                   width: 50,
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.transparent,
                 ),
               ),
             ),
+            Positioned(
+                top: 408,
+                right: 110,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.bounceOut,
+                    height: isPJ3 ? 300 : 0,
+                    width: isPJ3 ? 200 : 0,
+                    color: isPJ3
+                        ? Colors.white.withOpacity(0.5)
+                        : Colors.transparent,
+                  ),
+                )),
           ]),
         ),
       ]),
