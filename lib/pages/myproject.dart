@@ -49,8 +49,10 @@ class _MyProjectState extends State<MyProject> {
           isRotate = !isRotate;
         });
       },
-      child: Stack(children: [
-        InteractiveViewer(
+      child: SizedBox(
+        width: MQwidth,
+        height: MQheight,
+        child: InteractiveViewer(
           maxScale: 5,
           constrained: false,
           child: Stack(children: [
@@ -588,7 +590,7 @@ class _MyProjectState extends State<MyProject> {
                 )),
           ]),
         ),
-      ]),
+      ),
     ));
   }
 }

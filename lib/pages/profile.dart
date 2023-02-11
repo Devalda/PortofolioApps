@@ -149,13 +149,25 @@ class _ProfileState extends State<Profile> {
                   curve: Curves.slowMiddle,
                   duration: const Duration(milliseconds: 800),
                   child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(30)),
+                    borderRadius: isActiveUp
+                        ? const BorderRadius.all(Radius.circular(15))
+                        : const BorderRadius.all(Radius.circular(30)),
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.slowMiddle,
                       width: isActiveUp ? MQwidth * 0.25 : MQwidth * 0.7,
                       height: isActiveUp ? 140 : MQheight * 0.45,
-                      color: Color.fromARGB(240, 255, 255, 255),
+                      child: ClipRRect(
+                        borderRadius: isActiveUp
+                            ? const BorderRadius.all(Radius.circular(15))
+                            : const BorderRadius.all(Radius.circular(30)),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/foto/fotoProfile.jpg'))),
+                        ),
+                      ),
                     ),
                   ),
                 ),

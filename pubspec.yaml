@@ -25,6 +25,7 @@ dependencies:
   hexcolor: ^3.0.1
   rive: ^0.10.1
   url_launcher: ^6.1.9
+  animated_gradient: ^0.0.2
   
 
 dev_dependencies:
@@ -51,6 +52,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+  # Rive asset
     - assets/RiveAssets/Icons.riv
     - assets/RiveAssets/Logo.riv
     - assets/RiveAssets/Rocket.riv
@@ -63,7 +65,13 @@ flutter:
     - assets/RiveAssets/Love2.riv
     - assets/RiveAssets/Arrow.riv
     - assets/RiveAssets/Astronaut.riv
-  #   - images/a_dot_ham.jpeg
+  # Icon Social Media asset 
+    - assets/icon/facebook.png
+    - assets/icon/instagram.png
+    - assets/icon/linkedin.png
+    - assets/icon/whatsapp.png
+  # Foto
+    - assets/foto/fotoProfile.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
