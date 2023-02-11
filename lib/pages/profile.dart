@@ -68,56 +68,45 @@ class _ProfileState extends State<Profile> {
           alignment: Alignment.bottomCenter,
           child: Stack(children: [
             // header profile view
-            AnimatedPositioned(
-              top: isActiveUp ? 80 : 50,
-              left: isActiveUp ? 50 : MQwLevel,
-              curve: Curves.slowMiddle,
-              duration: const Duration(milliseconds: 800),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(30)),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 800),
-                  curve: Curves.slowMiddle,
-                  width: isActiveUp ? 90 : 300,
-                  height: isActiveUp ? 130 : 400,
-                  color: Color.fromARGB(240, 255, 255, 255),
-                ),
-              ),
-            ),
+
+            // text Big
             AnimatedPositioned(
               duration: const Duration(milliseconds: 800),
               curve: Curves.slowMiddle,
-              bottom: isActiveUp ? 550 : 285,
-              left: 33,
+              bottom: isActiveUp ? 550 : MQheight * 0.35,
               child: AnimatedOpacity(
                 duration: const Duration(milliseconds: 800),
                 opacity: isActiveUp ? 0 : 1,
                 curve: Curves.easeInOutSine,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isActiveDelay = !isActiveDelay;
-                    });
-                  },
-                  child: Column(children: [
-                    AnimatedDefaultTextStyle(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn,
-                        style: isActiveDelay
-                            ? GoogleFonts.londrinaSolid(
-                                fontSize: 45,
-                                color: Color.fromARGB(255, 255, 255, 255))
-                            : GoogleFonts.londrinaSketch(
-                                fontSize: 60,
-                                color: Color.fromARGB(255, 255, 255, 255)),
-                        child: Text(PersonName)),
-                    Text(
-                      DescBio,
-                      style: GoogleFonts.orbitron(
-                          fontSize: 25,
-                          color: Color.fromARGB(255, 255, 255, 255)),
-                    )
-                  ]),
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MQwidth,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isActiveDelay = !isActiveDelay;
+                      });
+                    },
+                    child: Column(children: [
+                      AnimatedDefaultTextStyle(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeIn,
+                          style: isActiveDelay
+                              ? GoogleFonts.londrinaSolid(
+                                  fontSize: 45,
+                                  color: Color.fromARGB(255, 255, 255, 255))
+                              : GoogleFonts.londrinaSketch(
+                                  fontSize: 60,
+                                  color: Color.fromARGB(255, 255, 255, 255)),
+                          child: Text(PersonName)),
+                      Text(
+                        DescBio,
+                        style: GoogleFonts.orbitron(
+                            fontSize: 25,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      )
+                    ]),
+                  ),
                 ),
               ),
             ),
@@ -139,8 +128,8 @@ class _ProfileState extends State<Profile> {
                     filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
                     child: AnimatedContainer(
                       curve: Curves.slowMiddle,
-                      height: isActiveUp ? 600 : 200,
-                      width: MediaQuery.of(context).size.width,
+                      height: isActiveUp ? MQheight * 0.65 : MQheight * 0.25,
+                      width: MQwidth,
                       color: isActiveUp
                           ? const Color.fromARGB(240, 62, 10, 94)
                           : const Color.fromARGB(191, 59, 30, 108),
@@ -150,29 +139,51 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
-            Positioned(
-              top: 120,
-              right: 50,
-              child: AnimatedOpacity(
-                duration: const Duration(milliseconds: 800),
-                opacity: isActiveUp ? 1.0 : 0,
-                curve: Curves.easeInOutSine,
-                child: Column(children: [
-                  Text(
-                    PersonName,
-                    style: GoogleFonts.londrinaSolid(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 255, 255, 255)),
+            // text MINI
+            Container(
+              width: MQwidth,
+              child: Stack(children: [
+                AnimatedPositioned(
+                  top: isActiveUp ? MQheight * 0.1 : MQheight * 0.07,
+                  left: isActiveUp ? 40 : MQwidth * 0.15,
+                  curve: Curves.slowMiddle,
+                  duration: const Duration(milliseconds: 800),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(30)),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 800),
+                      curve: Curves.slowMiddle,
+                      width: isActiveUp ? MQwidth * 0.25 : MQwidth * 0.7,
+                      height: isActiveUp ? 140 : MQheight * 0.45,
+                      color: Color.fromARGB(240, 255, 255, 255),
+                    ),
                   ),
-                  Text(
-                    DescBio,
-                    style: GoogleFonts.orbitron(
-                        fontSize: 10,
-                        color: Color.fromARGB(255, 255, 255, 255)),
-                  )
-                ]),
-              ),
+                ),
+                Positioned(
+                  top: MQheight * 0.15,
+                  right: 40,
+                  child: AnimatedOpacity(
+                    duration: const Duration(milliseconds: 800),
+                    opacity: isActiveUp ? 1.0 : 0,
+                    curve: Curves.easeInOutSine,
+                    child: Column(children: [
+                      Text(
+                        PersonName,
+                        style: GoogleFonts.londrinaSolid(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                      Text(
+                        DescBio,
+                        style: GoogleFonts.orbitron(
+                            fontSize: 10,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      )
+                    ]),
+                  ),
+                ),
+              ]),
             ),
           ]),
         ),

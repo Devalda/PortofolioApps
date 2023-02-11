@@ -262,21 +262,10 @@ class _QuoteGenState extends State<QuoteGen> {
                                     textAlign: TextAlign.center,
                                   ),
                                   Container(
-                                    alignment: Alignment.bottomRight,
-                                    child: isLiked
-                                        ? const SizedBox(
-                                            width: 150,
-                                            height: 150,
-                                          )
-                                        : const SizedBox(
-                                            width: 150,
-                                            height: 150,
-                                            child: RiveAnimation.asset(
-                                              "assets/RiveAssets/Love2.riv",
-                                              animations: ["Hover"],
-                                            ),
-                                          ),
-                                  ),
+                                      alignment: Alignment.bottomRight,
+                                      child: const SizedBox(
+                                        height: 50,
+                                      )),
                                 ],
                               ),
                             ),
@@ -312,41 +301,47 @@ class _QuoteGenState extends State<QuoteGen> {
                 duration: const Duration(milliseconds: 500),
                 width: MQwidth,
                 alignment: AlignmentDirectional.topStart,
-                height: isHUD ? 100 : 0,
+                height: isHUD ? MQheight * 0.12 : 0,
                 color: isHUD
                     ? Color.fromARGB(224, 62, 8, 66)
                     : const Color.fromARGB(0, 94, 13, 100),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 80, top: 40),
-                    child: Row(children: [
-                      Text("Quotes from Clouds",
-                          style: GoogleFonts.orbitron(
-                              fontSize: 20, color: Colors.white)),
-                      const SizedBox(
-                        width: 30,
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Get.snackbar(
-                                "LOVED or HATED",
-                                colorText: Colors.white,
-                                "try SWIPE OR DOUBLETAP",
-                                snackPosition: SnackPosition.BOTTOM,
-                                margin: const EdgeInsets.all(60.0),
-                                borderWidth: 2,
-                                borderColor: Color.fromARGB(255, 146, 8, 159),
-                                forwardAnimationCurve: Curves.elasticInOut,
-                                shouldIconPulse: true);
-                          },
-                          icon: const Icon(
-                            Icons.question_mark_outlined,
-                            color: Colors.white,
-                          ))
-                    ]),
+                child: Stack(children: [
+                  Positioned(
+                    top: 30,
+                    right: 10,
+                    child: IconButton(
+                        onPressed: () {
+                          Get.snackbar(
+                              "LOVED or HATED",
+                              colorText: Colors.white,
+                              "try SWIPE OR DOUBLETAP",
+                              snackPosition: SnackPosition.BOTTOM,
+                              margin: const EdgeInsets.all(60.0),
+                              borderWidth: 2,
+                              borderColor: Color.fromARGB(255, 146, 8, 159),
+                              forwardAnimationCurve: Curves.elasticInOut,
+                              shouldIconPulse: true);
+                        },
+                        icon: const Icon(
+                          Icons.question_mark_outlined,
+                          color: Colors.white,
+                        )),
                   ),
-                ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 80, top: 40),
+                      child: Row(children: [
+                        Text("Quotes from Clouds",
+                            style: GoogleFonts.orbitron(
+                                fontSize: 20, color: Colors.white)),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                      ]),
+                    ),
+                  ),
+                ]),
               ),
             ),
           ]),

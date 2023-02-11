@@ -1,7 +1,4 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart';
 
@@ -18,6 +15,17 @@ class _MyProjectState extends State<MyProject> {
   bool isPJ1 = false;
   bool isPJ2 = false;
   bool isPJ3 = false;
+
+  bool st1 = false;
+  bool st2 = false;
+  bool st3 = false;
+  bool st4 = false;
+  bool st5 = false;
+  bool st6 = false;
+  bool st7 = false;
+  bool st8 = false;
+  bool st9 = false;
+  bool st10 = false;
 
   @override
   void initState() {
@@ -45,8 +53,8 @@ class _MyProjectState extends State<MyProject> {
         InteractiveViewer(
           maxScale: 5,
           constrained: false,
-          // boundaryMargin: const EdgeInsets.only(left: 10, right: 10),
           child: Stack(children: [
+            // BACKGROUND
             SizedBox(
                 height: MQheight,
                 width: 1000,
@@ -56,6 +64,7 @@ class _MyProjectState extends State<MyProject> {
                   artboard: "Space Scene Demo",
                   // onInit:
                 )),
+            // ARROW POINTER
             const Positioned(
               bottom: 190,
               left: 50,
@@ -72,6 +81,7 @@ class _MyProjectState extends State<MyProject> {
                     )),
               ),
             ),
+            // TITLE
             Positioned(
               top: 330,
               left: 330,
@@ -100,6 +110,7 @@ class _MyProjectState extends State<MyProject> {
                 ),
               ]),
             ),
+            // containerTrigger 1
             Positioned(
               top: 248,
               left: 115,
@@ -127,10 +138,11 @@ class _MyProjectState extends State<MyProject> {
                     height: isPJ1 ? 300 : 0,
                     width: isPJ1 ? 200 : 0,
                     color: isPJ1
-                        ? Colors.white.withOpacity(0.5)
+                        ? const Color.fromARGB(219, 113, 113, 113)
                         : Colors.transparent,
                   ),
                 )),
+            // containerTrigger 2
             Positioned(
               top: 135,
               right: 318,
@@ -158,10 +170,11 @@ class _MyProjectState extends State<MyProject> {
                     height: isPJ2 ? 300 : 0,
                     width: isPJ2 ? 200 : 0,
                     color: isPJ2
-                        ? Colors.white.withOpacity(0.5)
+                        ? const Color.fromARGB(200, 113, 113, 113)
                         : Colors.transparent,
                   ),
                 )),
+            // containerTrigger 3
             Positioned(
               top: 378,
               right: 77,
@@ -189,8 +202,388 @@ class _MyProjectState extends State<MyProject> {
                     height: isPJ3 ? 300 : 0,
                     width: isPJ3 ? 200 : 0,
                     color: isPJ3
-                        ? Colors.white.withOpacity(0.5)
+                        ? const Color.fromARGB(219, 113, 113, 113)
                         : Colors.transparent,
+                  ),
+                )),
+            // star1
+            Positioned(
+              top: 260,
+              right: 182,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st1 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st1 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 270,
+                right: 198,
+                child: AnimatedOpacity(
+                  opacity: st1 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "Not this :D",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            //star2
+            Positioned(
+              top: 260,
+              right: 182,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st2 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st2 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 270,
+                right: 198,
+                child: AnimatedOpacity(
+                  opacity: st2 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "Nooope",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star3
+            Positioned(
+              top: 130,
+              right: 78,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st3 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st3 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 140,
+                right: 88,
+                child: AnimatedOpacity(
+                  opacity: st3 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "try again",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star4
+            Positioned(
+              bottom: 100,
+              right: 300,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st4 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st4 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: 120,
+                right: 300,
+                child: AnimatedOpacity(
+                  opacity: st4 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "far away :p",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star5
+            Positioned(
+              bottom: 140,
+              right: 85,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st5 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st5 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: 160,
+                right: 85,
+                child: AnimatedOpacity(
+                  opacity: st5 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "maybe another star",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star 6
+            Positioned(
+              bottom: 110,
+              left: 270,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st6 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st6 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: 130,
+                left: 200,
+                child: AnimatedOpacity(
+                  opacity: st6 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "wrong star",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star7
+            Positioned(
+              bottom: 235,
+              left: 190,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st7 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st7 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                bottom: 255,
+                left: 120,
+                child: AnimatedOpacity(
+                  opacity: st7 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "try any further",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star8
+            Positioned(
+              top: 320,
+              left: 80,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st8 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st8 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 340,
+                left: 80,
+                child: AnimatedOpacity(
+                  opacity: st8 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "don't give up",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star*9
+            Positioned(
+              top: 60,
+              left: 350,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st10 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st10 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 80,
+                left: 350,
+                child: AnimatedOpacity(
+                  opacity: st10 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "Too High XD",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
+                  ),
+                )),
+            // star10
+            Positioned(
+              top: 415,
+              left: 20,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    st9 = true;
+                  });
+                  Future.delayed(const Duration(milliseconds: 2000), () {
+                    setState(() {
+                      st10 = false;
+                    });
+                  });
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  color: Colors.transparent,
+                ),
+              ),
+            ),
+            Positioned(
+                top: 425,
+                left: 40,
+                child: AnimatedOpacity(
+                  opacity: st10 ? 1 : 0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // color: Colors.transparent,
+                    child: Text(
+                      "are you sure ?",
+                      style: GoogleFonts.aboreto(
+                          color: Colors.redAccent, fontSize: 20),
+                    ),
                   ),
                 )),
           ]),
