@@ -39,12 +39,18 @@ class _WelcomePageState extends State<WelcomePage> {
       body: Center(
           child: GestureDetector(
         onLongPress: () {
-          setState(() {
-            _isElevated = !_isElevated;
-          });
-          Future.delayed(const Duration(milliseconds: 450), () {
-            Get.toNamed(RouteName.home);
-          });
+          if (_isElevated == true) {
+            setState(() {
+              _isElevated = false;
+              Future.delayed(const Duration(milliseconds: 450), () {
+                Get.toNamed(RouteName.home);
+              });
+            });
+          } else if (_isElevated == false) {
+            setState(() {
+              _isElevated = true;
+            });
+          }
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
@@ -73,7 +79,7 @@ class _WelcomePageState extends State<WelcomePage> {
           // ignore: prefer_const_constructors
           child: Column(children: [
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             const SizedBox(
                 height: 200,
@@ -101,7 +107,7 @@ class _WelcomePageState extends State<WelcomePage> {
             AnimatedTextKit(
               repeatForever: true,
               animatedTexts: [
-                ColorizeAnimatedText('Pressed to continue',
+                ColorizeAnimatedText('Hold Press to Continue',
                     textStyle: GoogleFonts.orbitron(fontSize: 20),
                     colors: colorizeColors,
                     speed: const Duration(milliseconds: 400))

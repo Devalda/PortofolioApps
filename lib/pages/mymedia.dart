@@ -25,7 +25,7 @@ class MyMedia extends StatefulWidget {
   State<MyMedia> createState() => _MyMediaState();
 }
 
-class _MyMediaState extends State<MyMedia> {
+class _MyMediaState extends State<MyMedia> with SingleTickerProviderStateMixin {
   var MQwidth, MQsize, MQheight;
   bool isAstro = false;
   bool riseUp = true;
@@ -63,6 +63,7 @@ class _MyMediaState extends State<MyMedia> {
   bool isLinkedin = false;
   bool isFacebook = false;
   bool isWhatsapp = false;
+  bool isMail = false;
 
   List<Color> linkedinGradient = [
     const Color(0xFF86888A),
@@ -97,6 +98,13 @@ class _MyMediaState extends State<MyMedia> {
     const Color.fromARGB(255, 28, 57, 119),
   ];
 
+  List<Color> emailGradient = [
+    const Color(0xFFFEE9E1),
+    const Color(0xFF64B6AC),
+    const Color(0xFFC0DFDB),
+  ];
+
+  late AnimationController _gradientController;
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 600), () {
@@ -139,8 +147,8 @@ class _MyMediaState extends State<MyMedia> {
           alignment: Alignment.center,
           child: Column(
             children: [
-              const SizedBox(
-                height: 190,
+              SizedBox(
+                height: MQheight * 0.25,
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(30),
@@ -365,7 +373,8 @@ class _MyMediaState extends State<MyMedia> {
                               isWhatsapp = true;
                             });
                             // ignore: deprecated_member_use
-                            Future.delayed(Duration(milliseconds: 800), () {
+                            Future.delayed(const Duration(milliseconds: 800),
+                                () {
                               launch("https://whatsapp.com/");
                               setState(() {
                                 isWhatsapp = false;
@@ -419,11 +428,114 @@ class _MyMediaState extends State<MyMedia> {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Stack(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isMail = true;
+                                });
+                                Future.delayed(const Duration(seconds: 10), () {
+                                  setState(() {
+                                    isMail = false;
+                                  });
+                                });
+                                // ignore: deprecated_member_use
+                              },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 400),
+                                  width: MQwidth * 0.6,
+                                  decoration: BoxDecoration(
+                                    gradient: FG.LinearGradient(
+                                        colors: isMail
+                                            ? emailGradient
+                                            : plainColor),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Container(
+                                          width: 70,
+                                          height: 70,
+                                          decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/icon/mail.png'),
+                                                  fit: BoxFit.fill),
+                                              shape: BoxShape.rectangle),
+                                        ),
+                                      ),
+                                      // SPACER
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      AnimatedTextKit(
+                                        repeatForever: true,
+                                        animatedTexts: [
+                                          ColorizeAnimatedText('EMAIL',
+                                              textStyle: GoogleFonts.orbitron(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold),
+                                              colors: emailGradient,
+                                              speed: const Duration(
+                                                  milliseconds: 800))
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isMail = false;
+                                });
+                              },
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: AnimatedOpacity(
+                                  duration:
+                                      (const Duration(milliseconds: 1000)),
+                                  opacity: isMail ? 1 : 0,
+                                  child: AnimatedContainer(
+                                      alignment: Alignment.center,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      width: isMail ? MQwidth * 0.6 : 0,
+                                      height: isMail ? MQheight * 0.085 : 0,
+                                      decoration: BoxDecoration(
+                                          gradient: FG.LinearGradient(
+                                        colors: emailGradient,
+                                      )),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "brian@devalda.site",
+                                          style: GoogleFonts.orbitron(
+                                              fontSize: 20,
+                                              color: isMail
+                                                  ? Colors.redAccent
+                                                  : Colors.transparent,
+                                              fontWeight: FontWeight.w800),
+                                        ),
+                                      )),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

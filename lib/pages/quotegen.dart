@@ -123,7 +123,6 @@ class _QuoteGenState extends State<QuoteGen> {
                 controller: listViewController,
                 itemCount: listBlog.length + 1,
                 itemBuilder: (context, index) {
-                  bool isLiked = false;
                   if (index < listBlog.length) {
                     return Dismissible(
                       key: ValueKey<Blog>(listBlog[index]),
@@ -176,7 +175,6 @@ class _QuoteGenState extends State<QuoteGen> {
                                       HapticFeedback.vibrate(),
                                       selectedLovedIndex = index,
                                       setState(() {
-                                        isLiked = true;
                                         isShowLiked = true;
                                       }),
                                       Future.delayed(

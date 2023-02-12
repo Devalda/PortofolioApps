@@ -26,6 +26,9 @@ dependencies:
   rive: ^0.10.1
   url_launcher: ^6.1.9
   animated_gradient: ^0.0.2
+  animate_gradient: ^0.0.2
+  flutter_markdown: ^0.6.14
+  shared_preferences: ^2.0.17
   
 
 dev_dependencies:
@@ -70,8 +73,12 @@ flutter:
     - assets/icon/instagram.png
     - assets/icon/linkedin.png
     - assets/icon/whatsapp.png
+    - assets/icon/mail.png
   # Foto
     - assets/foto/fotoProfile.jpg
+  # Document
+    - assets/textFile/PrivacyNPolicy.md
+    - assets/textFile/TermsNCondition.md
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

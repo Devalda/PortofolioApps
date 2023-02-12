@@ -2,8 +2,9 @@ import 'package:devaldaporto/pages/welcome.dart';
 import 'package:devaldaporto/route/page_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return Material(
       child: Container(
@@ -32,8 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData(
-          scaffoldBackgroundColor: Color.fromARGB(255, 253, 227, 255)),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.black),
       home: WelcomePage(),
       getPages: PGRT.pages,
     );
