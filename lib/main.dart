@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+void main() {
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return Material(
       child: Container(
