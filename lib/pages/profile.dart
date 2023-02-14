@@ -495,224 +495,252 @@ class _ProfileState extends State<Profile> {
                                                   height: isJudul_03 ? 283 : 0,
                                                   width: MQwidth * 0.85,
                                                   child: Expanded(
-                                                    child: AnimatedOpacity(
-                                                      opacity:
-                                                          isJudul_03 ? 1 : 0,
-                                                      duration: const Duration(
-                                                          milliseconds: 100),
-                                                      curve: Curves
-                                                          .fastLinearToSlowEaseIn,
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(10),
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              width:
-                                                                  MQwidth * 0.8,
-                                                              height: MQheight *
-                                                                  0.05,
-                                                              decoration: BoxDecoration(
-                                                                  color: Colors
-                                                                      .purple,
-                                                                  border: Border.all(
-                                                                      width: 2,
+                                                    child: Offstage(
+                                                      offstage: !isJudul_03,
+                                                      child: AnimatedOpacity(
+                                                        opacity:
+                                                            isJudul_03 ? 1 : 0,
+                                                        duration:
+                                                            const Duration(
+                                                                seconds: 5),
+                                                        curve: Curves.linear,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(10),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              setState(() {
+                                                                isJudul_03 =
+                                                                    !isJudul_03;
+                                                              });
+                                                            },
+                                                            child: Column(
+                                                              children: [
+                                                                Container(
+                                                                  width:
+                                                                      MQwidth *
+                                                                          0.8,
+                                                                  height:
+                                                                      MQheight *
+                                                                          0.05,
+                                                                  decoration: BoxDecoration(
                                                                       color: Colors
-                                                                          .grey),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                          .purple,
+                                                                      border: Border.all(
+                                                                          width:
+                                                                              2,
+                                                                          color: Colors
+                                                                              .grey),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               10)),
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        8.0),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft,
-                                                                  child: Text(
-                                                                    "Name     : Brian Devalda",
-                                                                    style: GoogleFonts.inter(
-                                                                        fontSize:
-                                                                            20,
-                                                                        color: Colors
-                                                                            .white),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child:
+                                                                          Text(
+                                                                        "Name     : Brian Devalda",
+                                                                        style: GoogleFonts.inter(
+                                                                            fontSize:
+                                                                                20,
+                                                                            color:
+                                                                                Colors.white),
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 10),
-                                                            Container(
-                                                              width:
-                                                                  MQwidth * 0.8,
-                                                              height: MQheight *
-                                                                  0.05,
-                                                              decoration: BoxDecoration(
-                                                                  color: Colors
-                                                                      .purple,
-                                                                  border: Border.all(
-                                                                      width: 2,
+                                                                const SizedBox(
+                                                                    height: 10),
+                                                                Container(
+                                                                  width:
+                                                                      MQwidth *
+                                                                          0.8,
+                                                                  height:
+                                                                      MQheight *
+                                                                          0.05,
+                                                                  decoration: BoxDecoration(
                                                                       color: Colors
-                                                                          .grey),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                          .purple,
+                                                                      border: Border.all(
+                                                                          width:
+                                                                              2,
+                                                                          color: Colors
+                                                                              .grey),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               10)),
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(8),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft,
-                                                                  child: Text(
-                                                                    "DOB        : Tangerang, 04/05/2000",
-                                                                    style: GoogleFonts.inter(
-                                                                        fontSize:
-                                                                            18,
-                                                                        color: Colors
-                                                                            .white),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                            .all(8),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child:
+                                                                          Text(
+                                                                        "DOB        : Tangerang, 04/05/2000",
+                                                                        style: GoogleFonts.inter(
+                                                                            fontSize:
+                                                                                18,
+                                                                            color:
+                                                                                Colors.white),
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 10),
-                                                            Container(
-                                                              width:
-                                                                  MQwidth * 0.8,
-                                                              height: MQheight *
-                                                                  0.05,
-                                                              decoration: BoxDecoration(
-                                                                  color: Colors
-                                                                      .purple,
-                                                                  border: Border.all(
-                                                                      width: 2,
+                                                                const SizedBox(
+                                                                    height: 10),
+                                                                Container(
+                                                                  width:
+                                                                      MQwidth *
+                                                                          0.8,
+                                                                  height:
+                                                                      MQheight *
+                                                                          0.05,
+                                                                  decoration: BoxDecoration(
                                                                       color: Colors
-                                                                          .grey),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                          .purple,
+                                                                      border: Border.all(
+                                                                          width:
+                                                                              2,
+                                                                          color: Colors
+                                                                              .grey),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               10)),
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        8.0),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft,
-                                                                  child: Text(
-                                                                    "Nationality : Indonesian",
-                                                                    style: GoogleFonts.inter(
-                                                                        fontSize:
-                                                                            20,
-                                                                        color: Colors
-                                                                            .white),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child:
+                                                                          Text(
+                                                                        "Nationality : Indonesian",
+                                                                        style: GoogleFonts.inter(
+                                                                            fontSize:
+                                                                                20,
+                                                                            color:
+                                                                                Colors.white),
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 10),
-                                                            Container(
-                                                              width:
-                                                                  MQwidth * 0.8,
-                                                              height: MQheight *
-                                                                  0.05,
-                                                              decoration: BoxDecoration(
-                                                                  color: Colors
-                                                                      .purple,
-                                                                  border: Border.all(
-                                                                      width: 2,
+                                                                const SizedBox(
+                                                                    height: 10),
+                                                                Container(
+                                                                  width:
+                                                                      MQwidth *
+                                                                          0.8,
+                                                                  height:
+                                                                      MQheight *
+                                                                          0.05,
+                                                                  decoration: BoxDecoration(
                                                                       color: Colors
-                                                                          .grey),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                          .purple,
+                                                                      border: Border.all(
+                                                                          width:
+                                                                              2,
+                                                                          color: Colors
+                                                                              .grey),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               10)),
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        8.0),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft,
-                                                                  child: Text(
-                                                                    "Residence : Tangerang,Banten",
-                                                                    style: GoogleFonts.inter(
-                                                                        fontSize:
-                                                                            20,
-                                                                        color: Colors
-                                                                            .white),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child:
+                                                                          Text(
+                                                                        "Residence : Tangerang,Banten",
+                                                                        style: GoogleFonts.inter(
+                                                                            fontSize:
+                                                                                20,
+                                                                            color:
+                                                                                Colors.white),
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                            const SizedBox(
-                                                                height: 10),
-                                                            Container(
-                                                              width:
-                                                                  MQwidth * 0.8,
-                                                              height: MQheight *
-                                                                  0.05,
-                                                              decoration: BoxDecoration(
-                                                                  color: Colors
-                                                                      .purple,
-                                                                  border: Border.all(
-                                                                      width: 2,
+                                                                const SizedBox(
+                                                                    height: 10),
+                                                                Container(
+                                                                  width:
+                                                                      MQwidth *
+                                                                          0.8,
+                                                                  height:
+                                                                      MQheight *
+                                                                          0.05,
+                                                                  decoration: BoxDecoration(
                                                                       color: Colors
-                                                                          .grey),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                          .purple,
+                                                                      border: Border.all(
+                                                                          width:
+                                                                              2,
+                                                                          color: Colors
+                                                                              .grey),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               10)),
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        8.0),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft,
-                                                                  child: Text(
-                                                                    "Job       : Front end Developer",
-                                                                    style: GoogleFonts.inter(
-                                                                        fontSize:
-                                                                            20,
-                                                                        color: Colors
-                                                                            .white),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .centerLeft,
+                                                                      child:
+                                                                          Text(
+                                                                        "Job       : Front end Developer",
+                                                                        style: GoogleFonts.inter(
+                                                                            fontSize:
+                                                                                20,
+                                                                            color:
+                                                                                Colors.white),
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
+                                                                const SizedBox(
+                                                                    height: 10),
+                                                              ],
                                                             ),
-                                                            const SizedBox(
-                                                                height: 10),
-                                                          ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
