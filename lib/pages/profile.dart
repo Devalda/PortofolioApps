@@ -1,211 +1,78 @@
 import 'dart:ui';
+import 'package:devaldaporto/auth/agreementPops.dart';
 import 'package:devaldaporto/dialogs/TNC_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../auth/agreementPops.dart';
 import '../dialogs/policy_dialog.dart';
 
 // SharedPreferences? userPref;
+var MQwidth, MQsize, MQwLevel, MQheight;
+
+// ignore: non_constant_identifier_names
+String PersonName = "Brian Devalda";
+// ignore: non_constant_identifier_names
+String DescBio = "Junior UI/UX Developer";
+bool isActiveUp = false;
+bool isActiveDelay = false;
+
+bool isJudul_01 = false;
+bool isJudul_02 = false;
+bool isJudul_03 = false;
+bool isJudul_04 = false;
+bool isJudul_05 = false;
+bool? isUSERAGREEDTNC;
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
+  saveOptionsProf() async {
+    isUSERAGREEDTNC = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('agreement', true);
+  }
 
   @override
   State<Profile> createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
-  var MQwidth, MQsize, MQwLevel, MQheight;
-
-  // ignore: non_constant_identifier_names
-  String PersonName = "Brian Devalda";
-  // ignore: non_constant_identifier_names
-  String DescBio = "Junior UI/UX Developer";
-  bool isActiveUp = false;
-  bool isActiveDelay = false;
-
-  bool isJudul_01 = false;
-  bool isJudul_02 = false;
-  bool isJudul_03 = false;
-  bool isJudul_04 = false;
-  bool isJudul_05 = false;
-  bool isUSERAGREEDTNC = false;
-
-  Future init() async {
-    SharedPreferences userPref = await SharedPreferences.getInstance();
-    bool? agreement = userPref.getBool('agreement');
-    if (agreement == null) return;
-    setState(() => isUSERAGREEDTNC = agreement);
-    print(agreement);
-  }
-
-  // ignore: non_constant_identifier_names
-  Future DialogTNCandPNP() {
-    return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              backgroundColor: const Color.fromARGB(255, 60, 4, 58),
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
-              content: Builder(
-                builder: (context) {
-                  // Get available height and width of the build area of this widget. Make a choice depending on the size.
-                  var height = MQheight;
-                  var width = MQwidth;
-
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      height: MQheight * 0.4,
-                      color: Colors.black,
-                      // height: ,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              'Before we Continue..',
-                              style: GoogleFonts.orbitron(
-                                  fontSize: 20,
-                                  color: Colors.deepPurpleAccent,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 10),
-                            child: Text(
-                              'first "user" must Read to the ( Terms & Condition ) and ( Privacy Policy ) that have been provided below , and Agreed to it if "user" want to continue ',
-                              textAlign: TextAlign.justify,
-                              style: GoogleFonts.orbitron(
-                                  fontSize: 15,
-                                  color:
-                                      const Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.w100),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                TextButton(
-                                    onPressed: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return TermDialog(
-                                                mdFileName:
-                                                    'TermsNCondition.md');
-                                          });
-                                    },
-                                    child: Text(
-                                      'Terms & Condition',
-                                      style: GoogleFonts.orbitron(fontSize: 10),
-                                    )),
-                                TextButton(
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return PolicyDialog(
-                                              mdFileName: 'PrivacyNPolicy.md');
-                                        });
-                                  },
-                                  child: Text(
-                                    'Privacy Policy',
-                                    style: GoogleFonts.orbitron(fontSize: 10),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            "i agreed and proceed to continue",
-                            style: GoogleFonts.orbitron(
-                                fontSize: 10, color: Colors.white),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ElevatedButton(
-                                    // ignore: prefer_const_constructors
-                                    style: ButtonStyle(
-                                        enableFeedback: true,
-                                        backgroundColor:
-                                            const MaterialStatePropertyAll<
-                                                    Color>(
-                                                Colors.deepPurpleAccent)),
-                                    onPressed: () =>
-                                        Navigator.of(context).pop(),
-                                    child: const Text("cancel")),
-                                const SizedBox(
-                                  width: 30,
-                                ),
-                                ElevatedButton(
-                                    style: const ButtonStyle(
-                                        enableFeedback: true,
-                                        backgroundColor:
-                                            MaterialStatePropertyAll<Color>(
-                                                Colors.deepPurpleAccent)),
-                                    onPressed: () {
-                                      // userPref?.setBool('agreement', true);
-                                      setState(() {
-                                        Navigator.of(context).pop();
-                                      });
-                                    },
-                                    child: const Text("agree"))
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ));
-  }
+  final AgreementPops apos = AgreementPops();
 
   legitimateUser(String judul) {
-    // if (isUSERAGREEDTNC == false) {
-    //   DialogTNCandPNP();
-    // }
-    // if (isUSERAGREEDTNC == true) {
-    if (judul == "isJudul_01") {
-      setState(() {
-        isJudul_01 = !isJudul_01;
-      });
+    if (isUSERAGREEDTNC == false) {
+      apos.DialogTNCandPNP(context, MQwidth, MQheight, false);
     }
-    if (judul == "isJudul_02") {
-      setState(() {
-        isJudul_02 = !isJudul_02;
-      });
-    }
-    if (judul == "isJudul_03") {
-      setState(() {
-        isJudul_03 = !isJudul_03;
-      });
-    }
-    if (judul == "isJudul_04") {
-      setState(() {
-        isJudul_04 = !isJudul_04;
-      });
-    }
-    if (judul == "isJudul_05") {
-      setState(() {
-        isJudul_05 = !isJudul_05;
-      });
+    if (isUSERAGREEDTNC == true) {
+      if (judul == "isJudul_01") {
+        setState(() {
+          isJudul_01 = !isJudul_01;
+        });
+      }
+      if (judul == "isJudul_02") {
+        setState(() {
+          isJudul_02 = !isJudul_02;
+        });
+      }
+      if (judul == "isJudul_03") {
+        setState(() {
+          isJudul_03 = !isJudul_03;
+        });
+      }
+      if (judul == "isJudul_04") {
+        setState(() {
+          isJudul_04 = !isJudul_04;
+        });
+      }
+      if (judul == "isJudul_05") {
+        setState(() {
+          isJudul_05 = !isJudul_05;
+        });
+      }
     }
   }
-  // }
 
   void animatedText() {
     Future.delayed(const Duration(milliseconds: 2000), () {
@@ -215,8 +82,15 @@ class _ProfileState extends State<Profile> {
     });
   }
 
+  _loadShareprefData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    isUSERAGREEDTNC = prefs.getBool('agreement') ?? false;
+    print(isUSERAGREEDTNC);
+  }
+
   @override
   void initState() {
+    _loadShareprefData();
     Future.delayed(const Duration(milliseconds: 5000), () {
       setState(() {
         isActiveUp = true;

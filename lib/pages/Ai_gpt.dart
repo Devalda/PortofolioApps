@@ -75,7 +75,7 @@ class _QnAState extends State<QnA> {
       setState(() {
         looktext.change(3);
         chatGPToutput =
-            "Arghh...   Something is Not Right! \n my Connection to the Central System is being cut off! \n please contact my creator on the last tabs in navigation bar! ";
+            "Arghh...   Something is Not Right! \nmy Connection to the Central System is being cut off! \nplease contact my creator on the last tabs in navigation bar! ";
         responeOpenAI = chatGPToutput;
       });
     }
