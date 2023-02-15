@@ -7,6 +7,7 @@ import 'package:rive/rive.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../auth/secret.dart';
+import '../dialogs/apiGPTrequest.dart';
 
 class QnA extends StatefulWidget {
   const QnA({super.key});
@@ -115,8 +116,7 @@ class _QnAState extends State<QnA> {
     looktext.change(val.length.toDouble());
   }
 
-  @override
-  void initState() {
+  _defineArtboard() {
     rootBundle.load('assets/RiveAssets/AI2.riv').then((value) {
       final file = RiveFile.import(value);
       final art = file.mainArtboard;
@@ -131,33 +131,17 @@ class _QnAState extends State<QnA> {
           looktext = element as SMINumber;
         }
       }
-
       setState(() {
         artboard = art;
       });
     });
-    super.initState();
   }
 
-  List<AnimatedText> hintTextUserRotating = [
-    TypewriterAnimatedText('Get me sandwich recipe'),
-    TypewriterAnimatedText(
-        'Whats is a wormholes.\nExplain like iam 8 years old'),
-    TypewriterAnimatedText('Make a simple code in python'),
-    TypewriterAnimatedText(
-        'Explain the HTTPS stack to me and doit like a cowboy from old western'),
-    TypewriterAnimatedText('Who is the president of indonesia'),
-    TypewriterAnimatedText(
-        'Debug my code and translate it from javascript to ruby '),
-    TypewriterAnimatedText('Write some GoLang code'),
-    TypewriterAnimatedText('Help me with my Geography Assignment'),
-    TypewriterAnimatedText('Write me some Youtube Script'),
-    TypewriterAnimatedText('Translate my words into spanish'),
-    TypewriterAnimatedText(
-        'Write a song about love \nwith accompanying chords'),
-    TypewriterAnimatedText(
-        'Make me an essay about natural selection in biology'),
-  ];
+  @override
+  void initState() {
+    _defineArtboard();
+    super.initState();
+  }
 
   //++++++++++++++++++++++++++++++++++ builder ++++++++++++++++++++++++++++++++++++++++++++
   @override
@@ -186,7 +170,14 @@ class _QnAState extends State<QnA> {
                     child: SizedBox(
                       width: MQwidth,
                       height: isUserTyping ? MQheight * 0.2 : MQheight * 0.3,
-                      child: Rive(artboard: artboard!),
+                      // ignore: unnecessary_null_comparison
+                      child: artboard == null
+                          ? SizedBox(
+                              width: MQwidth,
+                              child: const SpinKitCircle(
+                                  color: Color.fromARGB(255, 255, 255, 255)),
+                            )
+                          : Rive(artboard: artboard!),
                     ),
                   ),
                   Container(

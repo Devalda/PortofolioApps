@@ -79,6 +79,9 @@ flutter:
     - assets/icon/mail.png
   # Foto
     - assets/foto/fotoProfile.jpg
+    - assets/foto/apps development.png
+    - assets/foto/Electro_proddev.png
+    - assets/foto/mechatronic_forklift.png
   # Document
     - assets/textFile/PrivacyNPolicy.md
     - assets/textFile/TermsNCondition.md

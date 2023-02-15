@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+const colorizeColorsWelcome = [
+  Color(0xFF790f6a),
+  Color(0xFFb93692),
+  Color(0xFFe851c4),
+  Color(0xFFb93692),
+];
+
 List<Color> plainColor = [
   const Color.fromARGB(50, 255, 255, 255),
   const Color.fromARGB(80, 255, 255, 255)
@@ -91,4 +98,44 @@ List effectbost = [
       spreadRadius: 1,
     ),
   ]
+];
+
+const gradientColorBottomNavigation = [
+  [
+    Color.fromARGB(190, 127, 56, 186),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+  ],
+  [
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(190, 127, 56, 186),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+  ],
+  [
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(190, 127, 56, 186),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+  ],
+  [
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(190, 127, 56, 186),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+  ],
+  [
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(168, 58, 14, 94),
+    Color.fromARGB(190, 127, 56, 186),
+  ],
 ];

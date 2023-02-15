@@ -1,5 +1,4 @@
 // ignore_for_file: unnecessary_new
-import 'dart:ffi';
 import 'dart:math';
 import 'dart:ui';
 import 'package:devaldaporto/controllers/repo_respond.dart';
@@ -14,6 +13,8 @@ import '../controllers/quotes_model.dart';
 import 'package:flutter/src/painting/gradient.dart' as FG;
 
 class QuoteGen extends StatefulWidget {
+  const QuoteGen({super.key});
+
   @override
   State<QuoteGen> createState() => _QuoteGenState();
 }
@@ -77,11 +78,11 @@ class _QuoteGenState extends State<QuoteGen> {
     });
   }
 
-  // @override
-  // void dispose() {
-  //   listViewController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    listViewController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

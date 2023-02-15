@@ -4,29 +4,29 @@ import 'package:rive/rive.dart';
 
 import '../route/name_route.dart';
 
+var MQwidth, MQsize, MQheight;
+bool isRotate = false;
+bool isPJ1 = false;
+bool isPJ2 = false;
+bool isPJ3 = false;
+
+bool st1 = false;
+bool st2 = false;
+bool st3 = false;
+bool st4 = false;
+bool st5 = false;
+bool st6 = false;
+bool st7 = false;
+bool st8 = false;
+bool st9 = false;
+bool st10 = false;
+
 class MyProject extends StatefulWidget {
   @override
   State<MyProject> createState() => _MyProjectState();
 }
 
 class _MyProjectState extends State<MyProject> {
-  var MQwidth, MQsize, MQheight;
-  bool isRotate = false;
-  bool isPJ1 = false;
-  bool isPJ2 = false;
-  bool isPJ3 = false;
-
-  bool st1 = false;
-  bool st2 = false;
-  bool st3 = false;
-  bool st4 = false;
-  bool st5 = false;
-  bool st6 = false;
-  bool st7 = false;
-  bool st8 = false;
-  bool st9 = false;
-  bool st10 = false;
-
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 5000), () {

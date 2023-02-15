@@ -6,6 +6,7 @@ import 'package:devaldaporto/utils/rive_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as flumat;
 import 'package:rive/rive.dart';
+import '../beautify/Colors_pallet.dart';
 import 'myproject.dart';
 
 const TextStyle _textStyle = TextStyle(
@@ -24,46 +25,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   RiveAssets selectedBotNav = bottomNavs.first;
 
-  final gradientColor = const [
-    [
-      Color.fromARGB(190, 127, 56, 186),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-    ],
-    [
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(190, 127, 56, 186),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-    ],
-    [
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(190, 127, 56, 186),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-    ],
-    [
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(190, 127, 56, 186),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-    ],
-    [
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(168, 58, 14, 94),
-      Color.fromARGB(190, 127, 56, 186),
-    ],
-  ];
-
   int _currentIndex = 0;
   final pageSelected = [QuoteGen(), QnA(), Profile(), MyProject(), MyMedia()];
 
@@ -81,7 +42,7 @@ class _HomeState extends State<Home> {
               gradient: flumat.LinearGradient(
                 end: Alignment.topRight,
                 begin: Alignment.bottomLeft,
-                colors: gradientColor[_currentIndex],
+                colors: gradientColorBottomNavigation[_currentIndex],
               ),
               borderRadius: BorderRadius.all(Radius.circular(24))),
           child: Row(

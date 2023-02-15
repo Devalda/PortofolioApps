@@ -7,8 +7,7 @@ import 'package:rive/rive.dart';
 import 'package:flutter/src/painting/gradient.dart' as FG;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../beautify/mymedia_color.dart';
+import '../beautify/Colors_pallet.dart';
 
 var MQwidth, MQsize, MQheight;
 bool isAstro = false;

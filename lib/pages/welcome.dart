@@ -3,14 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart';
+import '../beautify/Colors_pallet.dart';
 import '../route/name_route.dart';
-
-const colorizeColors = [
-  Color(0xFF790f6a),
-  Color(0xFFb93692),
-  Color(0xFFe851c4),
-  Color(0xFFb93692),
-];
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -109,7 +103,7 @@ class _WelcomePageState extends State<WelcomePage> {
               animatedTexts: [
                 ColorizeAnimatedText('Hold Press to Continue',
                     textStyle: GoogleFonts.orbitron(fontSize: 20),
-                    colors: colorizeColors,
+                    colors: colorizeColorsWelcome,
                     speed: const Duration(milliseconds: 400))
               ],
             )
