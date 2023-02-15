@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:rive/rive.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -19,6 +20,7 @@ const botBackgroundColor = Color(0xff444654);
 
 class _QnAState extends State<QnA> {
   final _textController = TextEditingController();
+  var MQwidth, MQsize, MQheight;
 
   late SMIBool processing;
   late SMINumber looktext;
@@ -29,65 +31,71 @@ class _QnAState extends State<QnA> {
   bool isUserTyping = false;
   String userInput = "";
   String chatGPToutput =
-      "Hello there, Call me Nexus. Im an Artificial Intelegence that being created by openAI corporation. Fell free to ask me anything";
+      "Hello there, Call me Nexus.\nIm an Artificial Intelligence that being created by openAI corporation. \nFeel free to ask me anything";
   String botOutput = "";
   int userInputKeyCount = 0;
   int botInputKeyCount = 0;
 
   // Do something with the response
   Future<String> generateResponse(String prompt) async {
+    String responeOpenAI = "";
     const apiKey = apiSecretKey;
+    try {
+      var url = Uri.https("api.openai.com", "/v1/completions");
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": "Bearer $apiKey"
+        },
+        body: json.encode({
+          "model": "text-davinci-003",
+          "prompt": prompt,
+          'temperature': 0,
+          'max_tokens': 200,
+          'top_p': 1,
+          'frequency_penalty': 0.0,
+          'presence_penalty': 0.0,
+        }),
+      );
 
-    var url = Uri.https("api.openai.com", "/v1/completions");
-    final response = await http.post(
-      url,
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": "Bearer $apiKey"
-      },
-      body: json.encode({
-        "model": "text-davinci-003",
-        "prompt": prompt,
-        'temperature': 0,
-        'max_tokens': 200,
-        'top_p': 1,
-        'frequency_penalty': 0.0,
-        'presence_penalty': 0.0,
-      }),
-    );
+      // Do something with the response
+      Map<String, dynamic> newresponse = jsonDecode(response.body);
 
-    // Do something with the response
-    Map<String, dynamic> newresponse = jsonDecode(response.body);
-
-    if (newresponse['choices'][0]['text'] == null) {
-      setState(() {
-        chatGPToutput = "hmm....   Something is Not Right";
-      });
-    } else {
       setState(() {
         isLoading = false;
-        processing.change(false);
+        looktext.change(0);
         chatGPToutput = newresponse['choices'][0]['text'];
+        responeOpenAI = chatGPToutput;
         print(chatGPToutput);
       });
+    } on NoSuchMethodError catch (e) {
+      print(e);
+      setState(() {
+        looktext.change(3);
+        chatGPToutput =
+            "Arghh...   Something is Not Right! \n my Connection to the Central System is being cut off! \n please contact my creator on the last tabs in navigation bar! ";
+        responeOpenAI = chatGPToutput;
+      });
     }
-
-    return newresponse['choices'][0]['text'];
+    return responeOpenAI;
   }
 
   sendMessage() {
     setState(() {
-      processing.change(true);
+      looktext.change(2);
       userInput = _textController.text;
       isLoading = true;
     });
     userInputKeyCount += 1;
     _textController.clear();
     generateResponse(userInput);
-    // Future.delayed(Duration(seconds: 3), () {
+    // Future.delayed(const Duration(seconds: 3), () {
     //   setState(() {
+    //     looktext.change(0);
     //     processing.change(false);
     //     isLoading = false;
+    //     // movesHeadRive(_textController.text.length);
     //   });
     // });
   }
@@ -98,20 +106,18 @@ class _QnAState extends State<QnA> {
 
   @override
   void initState() {
-    rootBundle.load('assets/rive/AI.riv').then((value) {
+    rootBundle.load('assets/RiveAssets/AI2.riv').then((value) {
       final file = RiveFile.import(value);
       final art = file.mainArtboard;
       stateMachineController =
           StateMachineController.fromArtboard(art, "State Machine 1")!;
 
-      if (stateMachineController != null) {
-        art.addController(stateMachineController);
-        for (var element in stateMachineController.inputs) {
-          if (element.name == "isHover") {
-            processing = element as SMIBool;
-          } else if (element.name == "xAxis") {
-            looktext = element as SMINumber;
-          }
+      art.addController(stateMachineController);
+      for (var element in stateMachineController.inputs) {
+        if (element.name == "isPressed") {
+          processing = element as SMIBool;
+        } else if (element.name == "States") {
+          looktext = element as SMINumber;
         }
       }
 
@@ -125,9 +131,9 @@ class _QnAState extends State<QnA> {
   //++++++++++++++++++++++++++++++++++ builder ++++++++++++++++++++++++++++++++++++++++++++
   @override
   Widget build(BuildContext context) {
-    var MQsize = MediaQuery.of(context).size;
-    var MQwidth = MQsize.width;
-    var MQheight = MQsize.height;
+    MQsize = MediaQuery.of(context).size;
+    MQwidth = MQsize.width;
+    MQheight = MQsize.height;
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -144,14 +150,14 @@ class _QnAState extends State<QnA> {
               Stack(
                 children: [
                   SizedBox(
-                    width: 400,
-                    height: 300,
+                    width: MQwidth,
+                    height: MQheight * 0.3,
                     child: Rive(artboard: artboard!),
                   ),
                   Container(
                     width: MQwidth,
-                    height: MQheight * 0.75,
-                    color: Color.fromRGBO(57, 57, 57, 0.248),
+                    height: MQheight * 0.72,
+                    color: const Color.fromRGBO(57, 57, 57, 0.248),
                     child: GestureDetector(
                       onTap: () =>
                           FocusManager.instance.primaryFocus?.unfocus(),
@@ -160,7 +166,7 @@ class _QnAState extends State<QnA> {
                           Column(
                             children: [
                               Divider(
-                                height: MQheight * 0.25,
+                                height: MQheight * 0.15,
                               ),
                               // bots profile
                               Padding(
@@ -170,43 +176,51 @@ class _QnAState extends State<QnA> {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                        top: 100,
+                                        top: 80,
                                         left: 20,
                                       ),
                                       child: AnimatedSwitcher(
                                         duration: const Duration(seconds: 1),
-                                        child: Container(
-                                          key: ValueKey(botInputKeyCount),
-                                          constraints: BoxConstraints(
-                                              maxWidth: 270, minWidth: 100),
-                                          decoration: BoxDecoration(
-                                              color:
-                                                  Color.fromARGB(190, 0, 0, 0),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              border: Border.all(
-                                                  color: Colors.grey,
-                                                  width: 2)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(20.0),
-                                            child: AnimatedSwitcher(
-                                              duration: const Duration(
-                                                  milliseconds: 100),
-                                              child: isLoading
-                                                  ? SpinKitSpinningLines(
-                                                      color: Colors.grey,
-                                                    )
-                                                  : Text(
-                                                      chatGPToutput,
-                                                      style: TextStyle(
-                                                          color: Color.fromARGB(
-                                                              255,
-                                                              255,
-                                                              255,
-                                                              255)),
-                                                      key: ValueKey(
-                                                          botInputKeyCount),
-                                                    ),
+                                        child: GestureDetector(
+                                          onTap: () => processing.change(true),
+                                          onTapCancel: () =>
+                                              processing.change(false),
+                                          child: Container(
+                                            key: ValueKey(botInputKeyCount),
+                                            constraints: BoxConstraints(
+                                                maxWidth: MQwidth * 0.75,
+                                                minWidth: MQwidth * 0.1),
+                                            decoration: BoxDecoration(
+                                                color: const Color.fromARGB(
+                                                    190, 0, 0, 0),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 2)),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(20.0),
+                                              child: AnimatedSwitcher(
+                                                duration: const Duration(
+                                                    milliseconds: 100),
+                                                child: isLoading
+                                                    ? const SpinKitSpinningLines(
+                                                        color: Colors.grey,
+                                                      )
+                                                    : Text(
+                                                        chatGPToutput,
+                                                        style: const TextStyle(
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255)),
+                                                        key: ValueKey(
+                                                            botInputKeyCount),
+                                                      ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -217,9 +231,7 @@ class _QnAState extends State<QnA> {
                               ),
                               // bots message
                               // user profile
-                              const Divider(
-                                height: 100,
-                              ),
+                              Divider(height: MQheight * 0.2),
                               Padding(
                                 padding: const EdgeInsets.all(30.0),
                                 child: Row(
@@ -235,11 +247,12 @@ class _QnAState extends State<QnA> {
                                         child: Container(
                                           key: ValueKey(userInputKeyCount),
                                           constraints: BoxConstraints(
-                                              maxWidth:
-                                                  isUserTyping ? 100 : 270,
-                                              minWidth: 100),
+                                              maxWidth: isUserTyping
+                                                  ? MQwidth * 0.3
+                                                  : MQwidth * 0.75,
+                                              minWidth: MQwidth * 0.3),
                                           decoration: BoxDecoration(
-                                              color: Color.fromARGB(
+                                              color: const Color.fromARGB(
                                                   194, 255, 255, 255),
                                               borderRadius:
                                                   BorderRadius.circular(20),
@@ -255,13 +268,17 @@ class _QnAState extends State<QnA> {
                                                   ? SpinKitSquareCircle(
                                                       key: ValueKey(1),
                                                       size: 30,
-                                                      color: Color.fromARGB(
-                                                              255, 69, 42, 143)
-                                                          .withOpacity(0.6),
+                                                      color:
+                                                          const Color.fromARGB(
+                                                                  255,
+                                                                  69,
+                                                                  42,
+                                                                  143)
+                                                              .withOpacity(0.6),
                                                     )
                                                   : Text(
                                                       userInput,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           color: Colors.black),
                                                       key: ValueKey(
                                                           userInputKeyCount),
@@ -290,7 +307,7 @@ class _QnAState extends State<QnA> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 20,
+                      width: MQwidth * 0.08,
                     ),
                     Expanded(
                       child: FocusScope(
@@ -301,7 +318,7 @@ class _QnAState extends State<QnA> {
                             });
                           },
                           child: TextFormField(
-                            onChanged: ((val) => movesHeadRive(val)),
+                            onChanged: ((val) => looktext.change(1)),
                             textCapitalization: TextCapitalization.sentences,
                             style: const TextStyle(color: Colors.white),
                             controller: _textController,

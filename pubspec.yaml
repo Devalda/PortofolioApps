@@ -69,6 +69,8 @@ flutter:
     - assets/RiveAssets/Love2.riv
     - assets/RiveAssets/Arrow.riv
     - assets/RiveAssets/Astronaut.riv
+    - assets/RiveAssets/AI.riv
+    - assets/RiveAssets/AI2.riv
   # Icon Social Media asset 
     - assets/icon/facebook.png
     - assets/icon/instagram.png

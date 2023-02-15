@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:devaldaporto/controllers/repo_respond.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -275,7 +276,7 @@ class _QuoteGenState extends State<QuoteGen> {
                     return const Padding(
                       padding: EdgeInsets.symmetric(vertical: 32),
                       child: Center(
-                        child: CircularProgressIndicator.adaptive(),
+                        child: SpinKitWave(color: Colors.grey),
                       ),
                     );
                   }

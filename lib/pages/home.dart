@@ -1,3 +1,4 @@
+import 'package:devaldaporto/pages/Ai_gpt.dart';
 import 'package:devaldaporto/pages/mymedia.dart';
 import 'package:devaldaporto/pages/profile.dart';
 import 'package:devaldaporto/pages/quotegen.dart';
@@ -29,8 +30,17 @@ class _HomeState extends State<Home> {
       Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
     ],
     [
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(190, 127, 56, 186),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
+    ],
+    [
+      Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(190, 127, 56, 186),
       Color.fromARGB(168, 58, 14, 94),
@@ -39,10 +49,14 @@ class _HomeState extends State<Home> {
     [
       Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(190, 127, 56, 186),
+      Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
     ],
     [
+      Color.fromARGB(168, 58, 14, 94),
+      Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
       Color.fromARGB(168, 58, 14, 94),
@@ -51,7 +65,7 @@ class _HomeState extends State<Home> {
   ];
 
   int _currentIndex = 0;
-  final pageSelected = [QuoteGen(), Profile(), MyProject(), MyMedia()];
+  final pageSelected = [QuoteGen(), QnA(), Profile(), MyProject(), MyMedia()];
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +163,12 @@ class RiveAssets {
 }
 
 List<RiveAssets> bottomNavs = [
+  RiveAssets(
+    src: "assets/RiveAssets/Icons.riv",
+    artboard: "HOME",
+    stateMachineName: "HOME_Interactivity",
+    title: "home",
+  ),
   RiveAssets(
     src: "assets/RiveAssets/Icons.riv",
     artboard: "CHAT",

@@ -1,1 +1,3 @@
-const apiSecretKey = "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";
+// ignore: file_names
+const apiSecretKey = "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";
+// const apiSecretKey = "sskskds";
