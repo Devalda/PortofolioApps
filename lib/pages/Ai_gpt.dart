@@ -1,12 +1,12 @@
 import 'dart:convert';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:rive/rive.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../bridge/apiStoreOpenAi.dart';
+import '../auth/secret.dart';
 
 class QnA extends StatefulWidget {
   const QnA({super.key});
@@ -27,6 +27,7 @@ class _QnAState extends State<QnA> {
   Artboard? artboard;
   late StateMachineController stateMachineController;
 
+  bool isBooting = true;
   bool isLoading = false;
   bool isUserTyping = false;
   String userInput = "";
@@ -81,8 +82,18 @@ class _QnAState extends State<QnA> {
     return responeOpenAI;
   }
 
+  keyboardHeigh() {
+    final viewInsets = EdgeInsets.fromWindowPadding(
+        WidgetsBinding.instance.window.viewInsets,
+        WidgetsBinding.instance.window.devicePixelRatio);
+    final keyboard = MQheight * 0.82 - viewInsets.bottom;
+    print(keyboard);
+    return keyboard;
+  }
+
   sendMessage() {
     setState(() {
+      isBooting = false;
       looktext.change(2);
       userInput = _textController.text;
       isLoading = true;
@@ -128,6 +139,26 @@ class _QnAState extends State<QnA> {
     super.initState();
   }
 
+  List<AnimatedText> hintTextUserRotating = [
+    TypewriterAnimatedText('Get me sandwich recipe'),
+    TypewriterAnimatedText(
+        'Whats is a wormholes.\nExplain like iam 8 years old'),
+    TypewriterAnimatedText('Make a simple code in python'),
+    TypewriterAnimatedText(
+        'Explain the HTTPS stack to me and doit like a cowboy from old western'),
+    TypewriterAnimatedText('Who is the president of indonesia'),
+    TypewriterAnimatedText(
+        'Debug my code and translate it from javascript to ruby '),
+    TypewriterAnimatedText('Write some GoLang code'),
+    TypewriterAnimatedText('Help me with my Geography Assignment'),
+    TypewriterAnimatedText('Write me some Youtube Script'),
+    TypewriterAnimatedText('Translate my words into spanish'),
+    TypewriterAnimatedText(
+        'Write a song about love \nwith accompanying chords'),
+    TypewriterAnimatedText(
+        'Make me an essay about natural selection in biology'),
+  ];
+
   //++++++++++++++++++++++++++++++++++ builder ++++++++++++++++++++++++++++++++++++++++++++
   @override
   Widget build(BuildContext context) {
@@ -135,6 +166,7 @@ class _QnAState extends State<QnA> {
     MQwidth = MQsize.width;
     MQheight = MQsize.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       extendBody: true,
       body: Stack(
@@ -149,14 +181,17 @@ class _QnAState extends State<QnA> {
             children: [
               Stack(
                 children: [
-                  SizedBox(
-                    width: MQwidth,
-                    height: MQheight * 0.3,
-                    child: Rive(artboard: artboard!),
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 200),
+                    child: SizedBox(
+                      width: MQwidth,
+                      height: isUserTyping ? MQheight * 0.2 : MQheight * 0.3,
+                      child: Rive(artboard: artboard!),
+                    ),
                   ),
                   Container(
                     width: MQwidth,
-                    height: MQheight * 0.72,
+                    height: isUserTyping ? keyboardHeigh() : MQheight * 0.72,
                     color: const Color.fromRGBO(57, 57, 57, 0.248),
                     child: GestureDetector(
                       onTap: () =>
@@ -166,7 +201,9 @@ class _QnAState extends State<QnA> {
                           Column(
                             children: [
                               Divider(
-                                height: MQheight * 0.15,
+                                height: isUserTyping
+                                    ? MQheight * 0.05
+                                    : MQheight * 0.15,
                               ),
                               // bots profile
                               Padding(
@@ -231,7 +268,10 @@ class _QnAState extends State<QnA> {
                               ),
                               // bots message
                               // user profile
-                              Divider(height: MQheight * 0.2),
+                              Divider(
+                                  height: isUserTyping
+                                      ? MQheight * 0.01
+                                      : MQheight * 0.11),
                               Padding(
                                 padding: const EdgeInsets.all(30.0),
                                 child: Row(
@@ -276,12 +316,31 @@ class _QnAState extends State<QnA> {
                                                                   143)
                                                               .withOpacity(0.6),
                                                     )
-                                                  : Text(
-                                                      userInput,
-                                                      style: const TextStyle(
-                                                          color: Colors.black),
-                                                      key: ValueKey(
-                                                          userInputKeyCount),
+                                                  : Container(
+                                                      child: isBooting
+                                                          ? SizedBox(
+                                                              width: 200.0,
+                                                              height: 50,
+                                                              child:
+                                                                  AnimatedTextKit(
+                                                                pause:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            2),
+                                                                repeatForever:
+                                                                    true,
+                                                                animatedTexts:
+                                                                    hintTextUserRotating,
+                                                              ),
+                                                            )
+                                                          : Text(
+                                                              userInput,
+                                                              style: const TextStyle(
+                                                                  color: Colors
+                                                                      .black),
+                                                              key: ValueKey(
+                                                                  userInputKeyCount),
+                                                            ),
                                                     ),
                                             ),
                                           ),
