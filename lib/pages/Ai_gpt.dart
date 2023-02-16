@@ -28,6 +28,7 @@ class _QnAState extends State<QnA> {
   Artboard? artboard;
   late StateMachineController stateMachineController;
 
+  bool startUp = true;
   bool isBooting = true;
   bool isLoading = false;
   bool isUserTyping = false;
@@ -140,6 +141,11 @@ class _QnAState extends State<QnA> {
   @override
   void initState() {
     _defineArtboard();
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        startUp = false;
+      });
+    });
     super.initState();
   }
 
@@ -165,25 +171,32 @@ class _QnAState extends State<QnA> {
             children: [
               Stack(
                 children: [
-                  AnimatedPositioned(
-                    duration: const Duration(milliseconds: 200),
-                    child: SizedBox(
-                      width: MQwidth,
-                      height: isUserTyping ? MQheight * 0.2 : MQheight * 0.3,
-                      // ignore: unnecessary_null_comparison
-                      child: artboard == null
-                          ? SizedBox(
-                              width: MQwidth,
-                              child: const SpinKitCircle(
-                                  color: Color.fromARGB(255, 255, 255, 255)),
-                            )
-                          : Rive(artboard: artboard!),
-                    ),
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 1000),
+                    curve: Curves.easeIn,
+                    child: startUp
+                        ? SizedBox(
+                            width: MQwidth,
+                            height: 200,
+                            child: const SpinKitPianoWave(
+                                color: Color.fromARGB(255, 153, 39, 173)),
+                          )
+                        : SizedBox(
+                            width: MQwidth,
+                            height:
+                                isUserTyping ? MQheight * 0.2 : MQheight * 0.3,
+                            // ignore: unnecessary_null_comparison
+                            child: artboard == null
+                                ? SizedBox(
+                                    width: MQwidth,
+                                  )
+                                : Rive(artboard: artboard!),
+                          ),
                   ),
                   Container(
                     width: MQwidth,
                     height: isUserTyping ? keyboardHeigh() : MQheight * 0.72,
-                    color: const Color.fromRGBO(57, 57, 57, 0.248),
+                    color: Colors.transparent,
                     child: GestureDetector(
                       onTap: () =>
                           FocusManager.instance.primaryFocus?.unfocus(),
@@ -229,25 +242,32 @@ class _QnAState extends State<QnA> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(20.0),
-                                              child: AnimatedSwitcher(
-                                                duration: const Duration(
-                                                    milliseconds: 100),
-                                                child: isLoading
-                                                    ? const SpinKitSpinningLines(
-                                                        color: Colors.grey,
-                                                      )
-                                                    : Text(
-                                                        chatGPToutput,
-                                                        style: const TextStyle(
-                                                            color:
-                                                                Color.fromARGB(
-                                                                    255,
-                                                                    255,
-                                                                    255,
-                                                                    255)),
-                                                        key: ValueKey(
-                                                            botInputKeyCount),
-                                                      ),
+                                              child: AnimatedOpacity(
+                                                duration:
+                                                    const Duration(seconds: 3),
+                                                opacity: startUp ? 0 : 1,
+                                                curve: Curves.bounceInOut,
+                                                child: AnimatedSwitcher(
+                                                  duration: const Duration(
+                                                      milliseconds: 100),
+                                                  child: isLoading
+                                                      ? const SpinKitSpinningLines(
+                                                          color: Colors.grey,
+                                                        )
+                                                      : Text(
+                                                          chatGPToutput,
+                                                          style:
+                                                              const TextStyle(
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          255,
+                                                                          255,
+                                                                          255)),
+                                                          key: ValueKey(
+                                                              botInputKeyCount),
+                                                        ),
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -311,17 +331,22 @@ class _QnAState extends State<QnA> {
                                                       child: isBooting
                                                           ? SizedBox(
                                                               width: 200.0,
-                                                              height: 50,
-                                                              child:
-                                                                  AnimatedTextKit(
-                                                                pause:
-                                                                    const Duration(
-                                                                        seconds:
-                                                                            2),
-                                                                repeatForever:
-                                                                    true,
-                                                                animatedTexts:
-                                                                    hintTextUserRotating,
+                                                              height: 70,
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .all(
+                                                                        8.0),
+                                                                child:
+                                                                    AnimatedTextKit(
+                                                                  pause: const Duration(
+                                                                      seconds:
+                                                                          2),
+                                                                  repeatForever:
+                                                                      true,
+                                                                  animatedTexts:
+                                                                      hintTextUserRotating,
+                                                                ),
                                                               ),
                                                             )
                                                           : Text(
@@ -368,6 +393,7 @@ class _QnAState extends State<QnA> {
                             });
                           },
                           child: TextFormField(
+                            onFieldSubmitted: ((value) => sendMessage()),
                             onChanged: ((val) => looktext.change(1)),
                             textCapitalization: TextCapitalization.sentences,
                             style: const TextStyle(color: Colors.white),

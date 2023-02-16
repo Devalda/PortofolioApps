@@ -74,6 +74,16 @@ class _ProfileState extends State<Profile> {
     }
   }
 
+  stageDelay() {
+    if (isJudul_03 == false) {
+      return true;
+    } else {
+      Future.delayed(const Duration(milliseconds: 1000), () {
+        return false;
+      });
+    }
+  }
+
   void animatedText() {
     Future.delayed(const Duration(milliseconds: 2000), () {
       setState(() {
@@ -356,269 +366,251 @@ class _ProfileState extends State<Profile> {
                                             GestureDetector(
                                               onTap: () {
                                                 setState(() {
-                                                  isJudul_03 = !isJudul_04;
+                                                  isJudul_03 = !isJudul_03;
                                                 });
                                               },
-                                              child: AnimatedContainer(
-                                                  duration: const Duration(
-                                                      seconds: 1),
-                                                  curve: Curves
-                                                      .fastLinearToSlowEaseIn,
-                                                  color: const Color.fromARGB(
-                                                      110, 255, 255, 255),
-                                                  height: isJudul_03 ? 283 : 0,
-                                                  width: MQwidth * 0.85,
-                                                  child: Expanded(
-                                                    child: Offstage(
-                                                      offstage: !isJudul_03,
-                                                      child: AnimatedOpacity(
-                                                        opacity:
-                                                            isJudul_03 ? 1 : 0,
-                                                        duration:
-                                                            const Duration(
-                                                                seconds: 5),
-                                                        curve: Curves.linear,
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(10),
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              setState(() {
-                                                                isJudul_03 =
-                                                                    !isJudul_03;
-                                                              });
-                                                            },
-                                                            child: Column(
-                                                              children: [
-                                                                Container(
-                                                                  width:
-                                                                      MQwidth *
-                                                                          0.8,
-                                                                  height:
-                                                                      MQheight *
-                                                                          0.05,
-                                                                  decoration: BoxDecoration(
-                                                                      color: Colors
-                                                                          .purple,
-                                                                      border: Border.all(
-                                                                          width:
-                                                                              2,
-                                                                          color: Colors
-                                                                              .grey),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10)),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
+                                              child: AnimatedSwitcher(
+                                                duration: const Duration(
+                                                    milliseconds: 800),
+                                                switchOutCurve:
+                                                    Curves.decelerate,
+                                                child: !isJudul_03
+                                                    ? const SizedBox(
+                                                        key: ValueKey(2))
+                                                    : Container(
+                                                        color: const Color
+                                                                .fromARGB(
+                                                            110, 255, 255, 255),
+                                                        height:
+                                                            MQheight * 0.335,
+                                                        width: MQwidth * 0.85,
+                                                        child: Expanded(
+                                                          key: ValueKey(1),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(10),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  isJudul_03 =
+                                                                      !isJudul_03;
+                                                                });
+                                                              },
+                                                              child: Column(
+                                                                children: [
+                                                                  Container(
+                                                                    width:
+                                                                        MQwidth *
+                                                                            0.8,
+                                                                    height:
+                                                                        MQheight *
+                                                                            0.05,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .purple,
+                                                                        border: Border.all(
+                                                                            width:
+                                                                                2,
+                                                                            color: Colors
+                                                                                .grey),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10)),
                                                                     child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .centerLeft,
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
                                                                       child:
-                                                                          Text(
-                                                                        "Name     : Brian Devalda",
-                                                                        style: GoogleFonts.inter(
-                                                                            fontSize:
-                                                                                20,
-                                                                            color:
-                                                                                Colors.white),
-                                                                        textAlign:
-                                                                            TextAlign.center,
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.centerLeft,
+                                                                        child:
+                                                                            Text(
+                                                                          "Name     : Brian Devalda",
+                                                                          style: GoogleFonts.inter(
+                                                                              fontSize: 20,
+                                                                              color: Colors.white),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                                const SizedBox(
-                                                                    height: 10),
-                                                                Container(
-                                                                  width:
-                                                                      MQwidth *
-                                                                          0.8,
-                                                                  height:
-                                                                      MQheight *
-                                                                          0.05,
-                                                                  decoration: BoxDecoration(
-                                                                      color: Colors
-                                                                          .purple,
-                                                                      border: Border.all(
-                                                                          width:
-                                                                              2,
-                                                                          color: Colors
-                                                                              .grey),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10)),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                            .all(8),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Container(
+                                                                    width:
+                                                                        MQwidth *
+                                                                            0.8,
+                                                                    height:
+                                                                        MQheight *
+                                                                            0.05,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .purple,
+                                                                        border: Border.all(
+                                                                            width:
+                                                                                2,
+                                                                            color: Colors
+                                                                                .grey),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10)),
                                                                     child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .centerLeft,
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8),
                                                                       child:
-                                                                          Text(
-                                                                        "DOB        : Tangerang, 04/05/2000",
-                                                                        style: GoogleFonts.inter(
-                                                                            fontSize:
-                                                                                18,
-                                                                            color:
-                                                                                Colors.white),
-                                                                        textAlign:
-                                                                            TextAlign.center,
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.centerLeft,
+                                                                        child:
+                                                                            Text(
+                                                                          "DOB        : Tangerang, 04/05/2000",
+                                                                          style: GoogleFonts.inter(
+                                                                              fontSize: 18,
+                                                                              color: Colors.white),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                                const SizedBox(
-                                                                    height: 10),
-                                                                Container(
-                                                                  width:
-                                                                      MQwidth *
-                                                                          0.8,
-                                                                  height:
-                                                                      MQheight *
-                                                                          0.05,
-                                                                  decoration: BoxDecoration(
-                                                                      color: Colors
-                                                                          .purple,
-                                                                      border: Border.all(
-                                                                          width:
-                                                                              2,
-                                                                          color: Colors
-                                                                              .grey),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10)),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Container(
+                                                                    width:
+                                                                        MQwidth *
+                                                                            0.8,
+                                                                    height:
+                                                                        MQheight *
+                                                                            0.05,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .purple,
+                                                                        border: Border.all(
+                                                                            width:
+                                                                                2,
+                                                                            color: Colors
+                                                                                .grey),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10)),
                                                                     child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .centerLeft,
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
                                                                       child:
-                                                                          Text(
-                                                                        "Nationality : Indonesian",
-                                                                        style: GoogleFonts.inter(
-                                                                            fontSize:
-                                                                                20,
-                                                                            color:
-                                                                                Colors.white),
-                                                                        textAlign:
-                                                                            TextAlign.center,
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.centerLeft,
+                                                                        child:
+                                                                            Text(
+                                                                          "Nationality : Indonesian",
+                                                                          style: GoogleFonts.inter(
+                                                                              fontSize: 20,
+                                                                              color: Colors.white),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                                const SizedBox(
-                                                                    height: 10),
-                                                                Container(
-                                                                  width:
-                                                                      MQwidth *
-                                                                          0.8,
-                                                                  height:
-                                                                      MQheight *
-                                                                          0.05,
-                                                                  decoration: BoxDecoration(
-                                                                      color: Colors
-                                                                          .purple,
-                                                                      border: Border.all(
-                                                                          width:
-                                                                              2,
-                                                                          color: Colors
-                                                                              .grey),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10)),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Container(
+                                                                    width:
+                                                                        MQwidth *
+                                                                            0.8,
+                                                                    height:
+                                                                        MQheight *
+                                                                            0.05,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .purple,
+                                                                        border: Border.all(
+                                                                            width:
+                                                                                2,
+                                                                            color: Colors
+                                                                                .grey),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10)),
                                                                     child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .centerLeft,
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
                                                                       child:
-                                                                          Text(
-                                                                        "Residence : Tangerang,Banten",
-                                                                        style: GoogleFonts.inter(
-                                                                            fontSize:
-                                                                                20,
-                                                                            color:
-                                                                                Colors.white),
-                                                                        textAlign:
-                                                                            TextAlign.center,
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.centerLeft,
+                                                                        child:
+                                                                            Text(
+                                                                          "Residence : Tangerang,Banten",
+                                                                          style: GoogleFonts.inter(
+                                                                              fontSize: 20,
+                                                                              color: Colors.white),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                                const SizedBox(
-                                                                    height: 10),
-                                                                Container(
-                                                                  width:
-                                                                      MQwidth *
-                                                                          0.8,
-                                                                  height:
-                                                                      MQheight *
-                                                                          0.05,
-                                                                  decoration: BoxDecoration(
-                                                                      color: Colors
-                                                                          .purple,
-                                                                      border: Border.all(
-                                                                          width:
-                                                                              2,
-                                                                          color: Colors
-                                                                              .grey),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10)),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                  Container(
+                                                                    width:
+                                                                        MQwidth *
+                                                                            0.8,
+                                                                    height:
+                                                                        MQheight *
+                                                                            0.05,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .purple,
+                                                                        border: Border.all(
+                                                                            width:
+                                                                                2,
+                                                                            color: Colors
+                                                                                .grey),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10)),
                                                                     child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .centerLeft,
+                                                                        Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
                                                                       child:
-                                                                          Text(
-                                                                        "Job       : Front end Developer",
-                                                                        style: GoogleFonts.inter(
-                                                                            fontSize:
-                                                                                20,
-                                                                            color:
-                                                                                Colors.white),
-                                                                        textAlign:
-                                                                            TextAlign.center,
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.centerLeft,
+                                                                        child:
+                                                                            Text(
+                                                                          "Job       : Front end Developer",
+                                                                          style: GoogleFonts.inter(
+                                                                              fontSize: 20,
+                                                                              color: Colors.white),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                                const SizedBox(
-                                                                    height: 10),
-                                                              ],
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          10),
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  )),
+                                                        )),
+                                              ),
                                             ),
                                             // JUDUL 4
                                             GestureDetector(
@@ -731,8 +723,12 @@ class _ProfileState extends State<Profile> {
                                                           style:
                                                               GoogleFonts.inter(
                                                                   fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
+                                                                  color: Color
+                                                                      .fromRGBO(
+                                                                          255,
+                                                                          255,
+                                                                          255,
+                                                                          1)),
                                                           textAlign:
                                                               TextAlign.center,
                                                         ),
