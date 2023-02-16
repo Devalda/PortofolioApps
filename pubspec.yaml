@@ -71,6 +71,7 @@ flutter:
     - assets/RiveAssets/Astronaut.riv
     - assets/RiveAssets/AI.riv
     - assets/RiveAssets/AI2.riv
+    - assets/RiveAssets/helix_loader.riv
   # Icon Social Media asset 
     - assets/icon/facebook.png
     - assets/icon/instagram.png
@@ -83,6 +84,7 @@ flutter:
     - assets/foto/Electro_proddev.png
     - assets/foto/mechatronic_forklift.png
     - assets/foto/dark_room.png
+    - assets/foto/purple_room.png
   # Document
     - assets/textFile/PrivacyNPolicy.md
     - assets/textFile/TermsNCondition.md

@@ -162,41 +162,46 @@ class _QnAState extends State<QnA> {
       extendBody: true,
       body: Stack(
         children: [
-          Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/foto/dark_room.png'),
-                      fit: BoxFit.fill)),
-            ),
+          Stack(
+            children: [
+              Container(
+                child: startUp
+                    ? SizedBox(
+                        width: MQwidth,
+                        height: 400,
+                        child: const SpinKitDancingSquare(
+                            size: 185,
+                            color: Color.fromARGB(255, 161, 69, 177)),
+                      )
+                    : AnimatedContainer(
+                        duration: const Duration(milliseconds: 800),
+                        curve: Curves.elasticInOut,
+                        height: isUserTyping ? MQheight * 0.21 : MQheight * 0.5,
+                        child: SizedBox(
+                          width: MQwidth,
+                          //
+                          child: artboard == null
+                              ? SizedBox(
+                                  width: MQwidth,
+                                )
+                              : Rive(artboard: artboard!),
+                        ),
+                      ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/foto/purple_room.png'),
+                        fit: BoxFit.fill)),
+              ),
+            ],
           ),
           SafeArea(
               child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Stack(
                 children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 1000),
-                    curve: Curves.easeIn,
-                    child: startUp
-                        ? SizedBox(
-                            width: MQwidth,
-                            height: 200,
-                            child: const SpinKitPianoWave(
-                                color: Color.fromARGB(255, 153, 39, 173)),
-                          )
-                        : SizedBox(
-                            width: MQwidth,
-                            height:
-                                isUserTyping ? MQheight * 0.2 : MQheight * 0.3,
-                            // ignore: unnecessary_null_comparison
-                            child: artboard == null
-                                ? SizedBox(
-                                    width: MQwidth,
-                                  )
-                                : Rive(artboard: artboard!),
-                          ),
-                  ),
                   Container(
                     width: MQwidth,
                     height: isUserTyping ? keyboardHeigh() : MQheight * 0.72,
@@ -208,10 +213,14 @@ class _QnAState extends State<QnA> {
                         children: [
                           Column(
                             children: [
-                              Divider(
-                                height: isUserTyping
-                                    ? MQheight * 0.05
-                                    : MQheight * 0.15,
+                              AnimatedSize(
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.fastLinearToSlowEaseIn,
+                                child: Divider(
+                                  height: isUserTyping
+                                      ? MQheight * 0.05
+                                      : MQheight * 0.28,
+                                ),
                               ),
                               // bots profile
                               Padding(
@@ -285,8 +294,8 @@ class _QnAState extends State<QnA> {
                               // user profile
                               Divider(
                                   height: isUserTyping
-                                      ? MQheight * 0.01
-                                      : MQheight * 0.11),
+                                      ? MQheight * 0
+                                      : MQheight * 0.01),
                               Padding(
                                 padding: const EdgeInsets.all(30.0),
                                 child: Row(
@@ -308,7 +317,7 @@ class _QnAState extends State<QnA> {
                                               minWidth: MQwidth * 0.3),
                                           decoration: BoxDecoration(
                                               color: const Color.fromARGB(
-                                                  194, 255, 255, 255),
+                                                  240, 255, 255, 255),
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                               border: Border.all(
