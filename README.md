@@ -2,6 +2,6 @@
 
 Hello :)
 
-This is my project for my protfolio spaces 
+This is my project for my portfolio spaces 
 
 # PortofolioApps
