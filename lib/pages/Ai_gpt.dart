@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:rive/rive.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -163,7 +164,10 @@ class _QnAState extends State<QnA> {
         children: [
           Expanded(
             child: Container(
-              color: Colors.black,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/foto/dark_room.png'),
+                      fit: BoxFit.fill)),
             ),
           ),
           SafeArea(
@@ -316,17 +320,11 @@ class _QnAState extends State<QnA> {
                                               duration: const Duration(
                                                   milliseconds: 100),
                                               child: isUserTyping
-                                                  ? SpinKitSquareCircle(
+                                                  ? const SpinKitSquareCircle(
                                                       key: ValueKey(1),
                                                       size: 30,
-                                                      color:
-                                                          const Color.fromARGB(
-                                                                  255,
-                                                                  69,
-                                                                  42,
-                                                                  143)
-                                                              .withOpacity(0.6),
-                                                    )
+                                                      color: Color.fromARGB(
+                                                          255, 75, 26, 173))
                                                   : Container(
                                                       child: isBooting
                                                           ? SizedBox(
@@ -378,11 +376,11 @@ class _QnAState extends State<QnA> {
               // ================================= bottom field =============================================
               Container(
                 height: MQheight * 0.1,
-                color: Colors.black,
+                color: Color.fromARGB(0, 0, 0, 0),
                 child: Row(
                   children: [
                     SizedBox(
-                      width: MQwidth * 0.08,
+                      width: MQwidth * 0.05,
                     ),
                     Expanded(
                       child: FocusScope(
@@ -392,8 +390,8 @@ class _QnAState extends State<QnA> {
                               isUserTyping = !isUserTyping;
                             });
                           },
-                          child: TextFormField(
-                            onFieldSubmitted: ((value) => sendMessage()),
+                          child: TextField(
+                            onSubmitted: ((value) => sendMessage()),
                             onChanged: ((val) => looktext.change(1)),
                             textCapitalization: TextCapitalization.sentences,
                             style: const TextStyle(color: Colors.white),
@@ -403,9 +401,9 @@ class _QnAState extends State<QnA> {
                                   borderSide: BorderSide(
                                       width: 3,
                                       color: Color.fromARGB(255, 74, 44, 154))),
-                              labelText: "Ask anything to Nexus",
-                              labelStyle: TextStyle(color: Colors.white),
-                              fillColor: Color.fromARGB(255, 46, 46, 46),
+                              hintText: "Ask anything to Nexus",
+                              hintStyle: TextStyle(color: Colors.white),
+                              fillColor: Color.fromARGB(188, 46, 46, 46),
                               hoverColor: Color.fromARGB(255, 59, 36, 123),
                               filled: true,
                             ),
@@ -419,7 +417,7 @@ class _QnAState extends State<QnA> {
                           sendMessage();
                         },
                         icon: const Icon(
-                          Icons.send_rounded,
+                          FontAwesomeIcons.arrowTurnUp,
                           color: Colors.white,
                         ))
                   ],
