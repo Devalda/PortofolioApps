@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 List<Widget> projectMecha = [
-  Expanded(
-      child: Column(
+  Column(
     children: [
       const Divider(
         height: 30,
@@ -21,7 +20,7 @@ List<Widget> projectMecha = [
                 DecorationImage(image: AssetImage("assets/foto/forklift.png"))),
       )
     ],
-  )),
+  ),
   Container(
     decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage("assets/foto/forklift2.png"))),
@@ -30,8 +29,7 @@ List<Widget> projectMecha = [
     decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage("assets/foto/forklift3.png"))),
   ),
-  Expanded(
-      child: ListView(
+  ListView(
     children: [
       Padding(
         padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -46,7 +44,7 @@ List<Widget> projectMecha = [
         ),
       ),
     ],
-  )),
+  ),
 ];
 
 class ProjMecha extends StatefulWidget {
@@ -63,11 +61,11 @@ class ProjMecha extends StatefulWidget {
 class _ProjMechaState extends State<ProjMecha>
     with SingleTickerProviderStateMixin {
   late final TabController controller;
-  int _index = 0;
+  final int _index = 0;
 
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
     controller = TabController(
         length: projectMecha.length, initialIndex: _index, vsync: this);
   }
@@ -80,20 +78,16 @@ class _ProjMechaState extends State<ProjMecha>
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        child: Stack(alignment: Alignment.center, children: <Widget>[
-          TabBarView(
-            controller: controller,
-            children: projectMecha,
-          ),
-          Positioned(
-              bottom: 20,
-              child: TabPageSelector(
-                controller: controller,
-              ))
-        ]),
+    return Stack(alignment: Alignment.center, children: <Widget>[
+      TabBarView(
+        controller: controller,
+        children: projectMecha,
       ),
-    );
+      Positioned(
+          bottom: 20,
+          child: TabPageSelector(
+            controller: controller,
+          ))
+    ]);
   }
 }

@@ -9,8 +9,7 @@ class projElectro extends StatefulWidget {
 }
 
 List<Widget> projectElectro = [
-  Expanded(
-      child: Column(children: [
+  Column(children: [
     const Divider(
       height: 30,
     ),
@@ -26,7 +25,7 @@ List<Widget> projectElectro = [
           image: DecorationImage(
               image: AssetImage("assets/foto/Electro_proddev.png"))),
     )
-  ])),
+  ]),
   Container(
     decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage("assets/foto/electro2.png"))),
@@ -39,8 +38,7 @@ List<Widget> projectElectro = [
     decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage("assets/foto/electro4.png"))),
   ),
-  Expanded(
-      child: ListView(
+  ListView(
     children: [
       Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
@@ -55,13 +53,13 @@ List<Widget> projectElectro = [
         ),
       ),
     ],
-  )),
+  ),
 ];
 
 class _projElectroState extends State<projElectro>
     with SingleTickerProviderStateMixin {
   late final TabController controller;
-  int _index = 0;
+  final int _index = 0;
 
   @override
   void initState() {
@@ -78,20 +76,16 @@ class _projElectroState extends State<projElectro>
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        child: Stack(alignment: Alignment.center, children: <Widget>[
-          TabBarView(
-            controller: controller,
-            children: projectElectro,
-          ),
-          Positioned(
-              bottom: 20,
-              child: TabPageSelector(
-                controller: controller,
-              ))
-        ]),
+    return Stack(alignment: Alignment.center, children: <Widget>[
+      TabBarView(
+        controller: controller,
+        children: projectElectro,
       ),
-    );
+      Positioned(
+          bottom: 20,
+          child: TabPageSelector(
+            controller: controller,
+          ))
+    ]);
   }
 }

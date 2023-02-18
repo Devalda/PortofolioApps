@@ -1,4 +1,3 @@
-import 'package:devaldaporto/pages/myproject.dart';
 import 'package:devaldaporto/pages/welcome.dart';
 import 'package:devaldaporto/route/page_route.dart';
 import 'package:flutter/material.dart';

@@ -121,8 +121,7 @@ class _MyMediaState extends State<MyMedia> with SingleTickerProviderStateMixin {
 
                               Future.delayed(const Duration(milliseconds: 800),
                                   () {
-                                launch(
-                                    "https://instagram.com/briandevalda?igshid=YmMyMTA2M2Y=");
+                                launch("https://instagram.com/briandevalda/");
                                 setState(() {
                                   isInstagram = false;
                                 });
@@ -192,7 +191,7 @@ class _MyMediaState extends State<MyMedia> with SingleTickerProviderStateMixin {
                               Future.delayed(const Duration(milliseconds: 800),
                                   () {
                                 launch(
-                                    "https://www.facebook.com/brian.devalda?mibextid=LQQJ4d");
+                                    "https://www.facebook.com/brian.devalda");
                                 setState(() {
                                   isFacebook = false;
                                 });

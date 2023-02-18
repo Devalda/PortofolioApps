@@ -9,8 +9,7 @@ class projUX extends StatefulWidget {
 }
 
 List<Widget> ProjectUX = [
-  Container(
-      child: Column(children: [
+  Column(children: [
     const Divider(
       height: 30,
     ),
@@ -25,7 +24,7 @@ List<Widget> ProjectUX = [
       decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage("assets/foto/ux_dev.png"))),
     )
-  ])),
+  ]),
   Container(
     height: 200,
     width: 150,
@@ -44,13 +43,12 @@ List<Widget> ProjectUX = [
     decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage("assets/foto/tkb3.jpg"))),
   ),
-  Expanded(
-      child: ListView(
+  ListView(
     children: [
       Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Text(
-          "Im an Information student, and of course i ever created And apps or website , i can make an UseCase diagram , State Machine Diagram , UX , Flow Diagram , Ui for website and apps ,managing Data realtional database , and i ever internship doing backend developer using django framework that creating some state and function and create and update some table using django(This kinda frustate since that project didnt have software analysis, so i must configure alone or analysis alone and coding it too. And do some software engineer like that is more hard since we can't find out the error imediately. not all the progress has the output and some case we even make the error configuration by our self, so how we suposed to know something went wrong when we didn't know whats wrong lol.(*ehem there is called software testing *but im inexperience) Not like the mechatornic developer and Ui developer that we can get the output as fast as we want so we cant know immediately some thing is wrong. Oh i can do video editing, movie maker, and some drawing sketch that is  because art ismy hobby. So yeah, thats the reason i choose front end developer know) ",
+          "Im an Information student, and of course i ever created And apps or website , i can make an UseCase diagram , State Machine Diagram , UX , Flow Diagram , Ui for website and apps ,managing Data realtional database , and i ever internship doing backend developer using django framework that creating some state and function and create and update some table using django(This kinda frustate since that project didnt have software analysis, so i must configure alone or analysis alone and coding it too. And do some software engineer like that is more hard since we can't find out the error imediately. not all the progress has the output and some case we even make the error configuration by our self, so how we suposed to know something went wrong when we didn't know whats wrong lol.(*ehem there is called software testing *but im inexperience) Not like the mechatornic developer and Ui developer that we can get the output as fast as we want so we cant know immediately some thing is wrong. Oh i can do video editing, movie maker, and some drawing sketch that is  because art is my hobby. So yeah, thats the reason i choose front end developer now) ",
           textAlign: TextAlign.justify,
           style: GoogleFonts.orbitron(
             fontSize: 10,
@@ -60,7 +58,7 @@ List<Widget> ProjectUX = [
         ),
       ),
     ],
-  )),
+  ),
 ];
 
 class _projUXState extends State<projUX> with SingleTickerProviderStateMixin {
@@ -69,7 +67,7 @@ class _projUXState extends State<projUX> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
     controller = TabController(
         length: ProjectUX.length, initialIndex: _index, vsync: this);
   }
@@ -82,20 +80,16 @@ class _projUXState extends State<projUX> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        child: Stack(alignment: Alignment.center, children: <Widget>[
-          TabBarView(
-            controller: controller,
-            children: ProjectUX,
-          ),
-          Positioned(
-              bottom: 20,
-              child: TabPageSelector(
-                controller: controller,
-              ))
-        ]),
+    return Stack(alignment: Alignment.center, children: <Widget>[
+      TabBarView(
+        controller: controller,
+        children: ProjectUX,
       ),
-    );
+      Positioned(
+          bottom: 20,
+          child: TabPageSelector(
+            controller: controller,
+          ))
+    ]);
   }
 }

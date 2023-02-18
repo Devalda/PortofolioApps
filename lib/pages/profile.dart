@@ -383,8 +383,9 @@ class _ProfileState extends State<Profile> {
                                                         height:
                                                             MQheight * 0.335,
                                                         width: MQwidth * 0.85,
-                                                        child: Expanded(
-                                                          key: ValueKey(1),
+                                                        child: Container(
+                                                          key:
+                                                              const ValueKey(1),
                                                           child: Padding(
                                                             padding:
                                                                 const EdgeInsets
@@ -653,159 +654,157 @@ class _ProfileState extends State<Profile> {
                                                     110, 255, 255, 255),
                                                 height: isJudul_04 ? 450 : 0,
                                                 width: MQwidth * 0.85,
-                                                child: Expanded(
-                                                  child: AnimatedOpacity(
-                                                    opacity: isJudul_04 ? 1 : 0,
-                                                    duration: const Duration(
-                                                        milliseconds: 100),
-                                                    curve: Curves.fastOutSlowIn,
-                                                    child: Column(
-                                                      children: [
-                                                        const SizedBox(
-                                                          height: 20,
-                                                        ),
-                                                        Text(
-                                                          "INFORMATION SYSTEM",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 20,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          "BINUS UNIVERSITY JAKARTA",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 20,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          "2018 - 2022",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 40,
-                                                        ),
-                                                        Text(
-                                                          "EVENTS ACTIVITIES",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 20,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          " - steering Committee at DvSos2019 - KMBD BINUS(Jakrta - 2019)",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          " - HEAD Division Art and Documentation at Welcome Party KMBD(Jakarta - 2019)",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Color
-                                                                      .fromRGBO(
-                                                                          255,
-                                                                          255,
-                                                                          255,
-                                                                          1)),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          " - Volunteer vesakh at Borobudur temple(Magelang - 2019)",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        SizedBox(
-                                                          height: 40,
-                                                        ),
-                                                        Text(
-                                                          "SKILLS",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 20,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          "- UI/UX Developer",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          "- Video Editor",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          "- BackEnd Engineer",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          "- Ilustrator",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                        Text(
-                                                          "- Mechatronic Engineer",
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                                  fontSize: 15,
-                                                                  color: Colors
-                                                                      .white),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                        ),
-                                                      ],
-                                                    ),
+                                                child: AnimatedOpacity(
+                                                  opacity: isJudul_04 ? 1 : 0,
+                                                  duration: const Duration(
+                                                      milliseconds: 100),
+                                                  curve: Curves.fastOutSlowIn,
+                                                  child: Column(
+                                                    children: [
+                                                      const SizedBox(
+                                                        height: 20,
+                                                      ),
+                                                      Text(
+                                                        "INFORMATION SYSTEM",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 20,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        "BINUS UNIVERSITY JAKARTA",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 20,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        "2018 - 2022",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 40,
+                                                      ),
+                                                      Text(
+                                                        "EVENTS ACTIVITIES",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 20,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        " - steering Committee at DvSos2019 - KMBD BINUS(Jakrta - 2019)",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        " - HEAD Division Art and Documentation at Welcome Party KMBD(Jakarta - 2019)",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Color
+                                                                    .fromRGBO(
+                                                                        255,
+                                                                        255,
+                                                                        255,
+                                                                        1)),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        " - Volunteer vesakh at Borobudur temple(Magelang - 2019)",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      SizedBox(
+                                                        height: 40,
+                                                      ),
+                                                      Text(
+                                                        "SKILLS",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 20,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        "- UI/UX Developer",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        "- Video Editor",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        "- BackEnd Engineer",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        "- Ilustrator",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                      Text(
+                                                        "- Mechatronic Engineer",
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
