@@ -80,11 +80,20 @@ flutter:
     - assets/icon/mail.png
   # Foto
     - assets/foto/fotoProfile.jpg
-    - assets/foto/apps development.png
+    - assets/foto/ux_dev.png
     - assets/foto/Electro_proddev.png
     - assets/foto/mechatronic_forklift.png
     - assets/foto/dark_room.png
     - assets/foto/purple_room.png
+    - assets/foto/forklift.png
+    - assets/foto/forklift2.png
+    - assets/foto/forklift3.png
+    - assets/foto/tkb1.jpg
+    - assets/foto/tkb2.jpg
+    - assets/foto/tkb3.jpg
+    - assets/foto/electro2.png
+    - assets/foto/electro3.png
+    - assets/foto/electro4.png
   # Document
     - assets/textFile/PrivacyNPolicy.md
     - assets/textFile/TermsNCondition.md

@@ -123,7 +123,6 @@ class _ProfileState extends State<Profile> {
           child: RotatedBox(
             quarterTurns: 3,
             child: SizedBox(
-                height: MQwidth,
                 width: MQheight,
                 child: const RiveAnimation.asset(
                   fit: BoxFit.cover,
@@ -469,7 +468,7 @@ class _ProfileState extends State<Profile> {
                                                                             Alignment.centerLeft,
                                                                         child:
                                                                             Text(
-                                                                          "DOB        : Tangerang, 04/05/2000",
+                                                                          "DOB      : Tangerang, 04/05/2000",
                                                                           style: GoogleFonts.inter(
                                                                               fontSize: 18,
                                                                               color: Colors.white),

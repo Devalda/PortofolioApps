@@ -1,8 +1,8 @@
+import 'package:devaldaporto/pages/myproject.dart';
 import 'package:devaldaporto/pages/welcome.dart';
 import 'package:devaldaporto/route/page_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   ErrorWidget.builder = (FlutterErrorDetails details) {
@@ -22,6 +22,9 @@ void main() {
             ],
           )),
     );
+  };
+  FlutterError.onError = (FlutterErrorDetails details) {
+    FlutterError.dumpErrorToConsole(details, forceReport: false);
   };
   runApp(const MyApp());
 }

@@ -96,8 +96,9 @@ class _QnAState extends State<QnA> {
 
   sendMessage() {
     setState(() {
-      isBooting = false;
       looktext.change(2);
+      processing.change(false);
+      isBooting = false;
       userInput = _textController.text;
       isLoading = true;
     });
@@ -237,7 +238,9 @@ class _QnAState extends State<QnA> {
                                         duration: const Duration(seconds: 1),
                                         child: GestureDetector(
                                           onTap: () => processing.change(true),
-                                          onTapCancel: () =>
+                                          onDoubleTap: () =>
+                                              processing.change(false),
+                                          onLongPress: () =>
                                               processing.change(false),
                                           child: Container(
                                             key: ValueKey(botInputKeyCount),
